@@ -1,42 +1,130 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.head-title {
   text-align: center;
+  font-family: 'Georgia', serif;
+  margin: 5px 0;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.body-text {
+  font-family: 'Georgia', serif;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  align-items: center;
+  color: #333;
+  max-width: 600px;
+  width: 90%;
+  margin: 0 auto;
+  
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.image-wrapper
+{
+  display: flex;
+  justify-content: center;
+  margin-left: -50px;
+  height: 400px;
+  width:400px;
+  margin-top: 30px;
 }
 
-.card {
-  padding: 2em;
+.content-row
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-.read-the-docs {
-  color: #888;
+.page-content
+{
+  display: flex;
+  justify-content: center; 
+  align-items: center;
 }
+
+.journal-container {
+  width: 100%;
+  min-height: 100vh; 
+  background-color: #fff;
+  position: relative;
+  
+  /* The Blue Lines Pattern */
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 29px,
+    #a2d9f5 30px
+  );
+  line-height: 30px; 
+}
+
+/* 3. The Red Margin Line */
+.journal-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 60px; 
+  width: 2px;
+  height: 100%; 
+  background-color: #ff9d9d;
+  z-index: 1;
+}
+
+/* 4. The Content Area */
+.paper-background {
+  padding-top: 50px;
+  padding-left: 80px; 
+  padding-right: 20px;
+  max-width: 1200px; 
+  align-items: center;
+}
+
+.sidebar {
+  position: fixed;
+  top: 4vh;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 10;
+  margin-right: -15px;
+
+}
+
+button.tab {
+  width: 50px;
+  height: 120px;
+  border-radius: 0 10px 10px 0; 
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg); 
+  font-family: inherit;
+  font-size: 1.1rem;
+  color: #ffffff;
+  box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, width 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+button.tab:hover {
+  transform: rotate(180deg) translateX(10px); 
+  width: 60px;
+}
+
+button.tab.active
+{
+  margin-right: 0;
+  width: 65px;
+  box-shadow: -4px 4px 10px rgba(7, 7, 7, 0.3);
+}
+
+.tab.home {background-color: #f7c1f9;}
+.tab.about {background-color: #9ba3f8;}
+.tab.experiences {background-color: #d6f9c1;}
+.tab.contact {background-color: #f4a89b;}
