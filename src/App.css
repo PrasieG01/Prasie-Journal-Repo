@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Indie+Flower&family=Pangolin&display=swap');
+
 body, html {
   margin: 0;
   padding: 0;
@@ -7,12 +10,14 @@ body, html {
 
 .head-title {
   text-align: center;
-  font-family: 'Georgia', serif;
-  margin: 5px 0;
+  font-family: "Pangolin", cursive;
+  margin: 15px 0;
+  color: var(--ink);
+  background: linear-gradient(to top, rgba(255, 235, 59, 0.5) 40%, transparent 40%);
 }
 
 .body-text {
-  font-family: 'Georgia', serif;
+  font-family: 'Patrick Hand', cursive;
   font-size: 1.2rem;
   line-height: 1.6;
   align-items: center;
@@ -21,6 +26,153 @@ body, html {
   width: 90%;
   margin: 0 auto;
   
+}
+
+/* --- HOME LAYOUT --- */
+.home-container {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px; 
+  padding: 0 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.profile-column {
+  position: relative; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.doodle-avatar-frame {
+  width: 260px;
+  height: 260px;
+  background: white;
+  border: 4px solid #f9f8c1;
+  /* border: 4px solid var(--ink); */
+  border-radius: 50% 55% 45% 50% / 55% 50% 50% 45%; 
+  overflow: hidden;
+  box-shadow: 8px 8px 0 rgba(0,0,0,0.1);
+  z-index: 1;
+}
+
+.doodle-img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+
+.thought-bubble {
+  position: absolute;
+  top: 260px;  
+  right: -70px; 
+  width: 220px;
+  padding: 25px;
+  background-color: white;
+  border: 3px solid var(--ink);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  
+  text-align: center;
+  z-index: 2; 
+  box-shadow: 5px 5px 0 rgba(0,0,0,0.1);
+  
+  animation: floatBubble 3s ease-in-out infinite;
+}
+
+.bubble-tail {
+  position: absolute;
+  top: 40px; 
+  left: -25px; 
+  width: 10px; height: 10px;
+  background: white;
+  border: 3px solid var(--ink);
+  border-radius: 50%;
+}
+
+.bubble-tail::before {
+  content: '';
+  position: absolute;
+  top: 15px; left: -15px;
+  width: 15px; height: 15px;
+  background: white;
+  border: 3px solid var(--ink);
+  border-radius: 50%;
+}
+
+.bubble-text-small {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1rem;
+  color: #666;
+  margin: 0;
+  transform: rotate(-2deg);
+}
+
+.bubble-name {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 2.5rem;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.2;
+  transform: rotate(-1deg);
+}
+
+.text-column {
+  max-width: 450px;
+  padding-left: 20px;
+}
+
+.arrow-pointer {
+  font-size: 3rem;
+  font-family: 'Patrick Hand', cursive;
+  color: var(--ink);
+  transform: rotate(150deg); 
+  margin-left: -40px;
+  margin-bottom: -20px;
+  opacity: 0.5;
+}
+
+.greeting-text {
+  font-family: "Pangolin", cursive;
+  font-size: 3rem;
+  color: var(--ink);
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.bio-text {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.4rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+.highlight {
+  background: linear-gradient(to top, #fff9c4 40%, transparent 40%);
+  padding: 0 5px;
+}
+
+
+@keyframes floatBubble {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-5px) rotate(1deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+/* Mobile Fix */
+@media (max-width: 768px) {
+  .home-container {
+    flex-direction: column;
+    padding-top: 50px;
+    gap: 100px; 
+  }
+  .thought-bubble {
+    top: 240px; 
+    right: auto; 
+    left: 50%; 
+    transform: translateX(-50%);
+  }
+  .arrow-pointer { display: none; }
 }
 
 .image-wrapper
@@ -41,47 +193,20 @@ body, html {
   margin-bottom: 20px;
 }
 
-.page-content
-{
+.page-content {
   display: flex;
-  justify-content: center; 
-  align-items: center;
-}
-
-.journal-container {
+  flex-direction: column; 
+  justify-content: flex-start; 
+  align-items: center; 
   width: 100%;
-  min-height: 100vh; 
-  background-color: #fff;
-  position: relative;
-  
-  /* The Blue Lines Pattern */
-  background-image: repeating-linear-gradient(
-    transparent,
-    transparent 29px,
-    #a2d9f5 30px
-  );
-  line-height: 30px; 
+  min-height: 100vh;
 }
 
-/* 3. The Red Margin Line */
-.journal-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 60px; 
-  width: 2px;
-  height: 100%; 
-  background-color: #ff9d9d;
-  z-index: 1;
-}
-
-/* 4. The Content Area */
-.paper-background {
-  padding-top: 50px;
-  padding-left: 80px; 
-  padding-right: 20px;
-  max-width: 1200px; 
-  align-items: center;
+.journal-container
+{
+    background-color: #ffffff; 
+    background-image: radial-gradient(circle, #a0a0a0 1px, transparent 1px);
+    background-size: 30px 30px;
 }
 
 .sidebar {
@@ -103,7 +228,7 @@ button.tab {
   writing-mode: vertical-rl;
   text-orientation: mixed;
   transform: rotate(180deg); 
-  font-family: inherit;
+  font-family: 'Patrick Hand', cursive;
   font-size: 1.1rem;
   color: #ffffff;
   box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.2);
@@ -128,3 +253,337 @@ button.tab.active
 .tab.about {background-color: #9ba3f8;}
 .tab.experiences {background-color: #d6f9c1;}
 .tab.contact {background-color: #f4a89b;}
+
+
+:root {
+  --ink: #2c2c2c;       
+  --paper: #fcfcfc;     
+  --tape: rgba(255, 248, 225, 0.8); 
+}
+
+.polaroid-doodle {
+  width: 260px;
+  background-color: white;
+  padding: 15px 15px 50px 15px; 
+  position: relative;
+  cursor: pointer;
+  
+  border: 3px solid var(--ink);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  
+  box-shadow: 6px 6px 0 rgba(0,0,0,0.15); 
+  
+  transition: transform 0.2s ease;
+}
+
+.polaroid-doodle:hover {
+  transform: scale(1.02) rotate(-1deg) !important; 
+  box-shadow: 8px 8px 0 rgba(0,0,0,0.2);
+}
+
+.photo-sketch {
+  width: 100%;
+  height: 220px;
+  background-color: #eee;
+  overflow: hidden;
+  
+  border: 2px solid var(--ink);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+}
+
+.photo-sketch img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) contrast(110%);
+  transition: filter 0.3s;
+}
+
+.polaroid-doodle:hover .photo-sketch img {
+  filter: grayscale(0%) contrast(100%); 
+}
+
+
+.washi-tape {
+  position: absolute;
+  top: -15px;
+  left: 35%;
+  width: 90px;
+  height: 30px;
+  background-color: var(--tape);
+  border-left: 1px dashed rgba(0,0,0,0.1);
+  border-right: 1px dashed rgba(0,0,0,0.1);
+  
+  clip-path: polygon(0% 5%, 5% 0%, 15% 5%, 25% 0%, 35% 5%, 45% 0%, 55% 5%, 65% 0%, 75% 5%, 85% 0%, 95% 5%, 100% 0%, 100% 95%, 95% 100%, 85% 95%, 75% 100%, 65% 95%, 55% 100%, 45% 95%, 35% 100%, 25% 95%, 15% 100%, 5% 95%, 0% 100%);
+  
+  opacity: 0.8;
+  z-index: 10;
+  transform: rotate(-2deg);
+}
+
+.marker-caption {
+  font-family: 'Patrick Hand', cursive; 
+  font-size: 1.4rem;
+  color: var(--ink);
+  text-align: center;
+  margin-top: 15px;
+  transform: rotate(-1deg); 
+}
+
+.polaroid-back-doodle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  font-family: 'Patrick Hand', cursive;
+  padding: 10px;
+}
+
+.doodle-github-link {
+  display: inline-block;
+  margin-bottom: 10px; 
+  font-family: 'Patrick Hand', cursive;
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: #333;
+  background-color: #fff;
+  
+  border: 2px solid #333;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  padding: 5px 12px;
+  
+  transition: all 0.2s ease;
+}
+
+.doodle-github-link:hover {
+  background-color: #333;
+  color: #fff;
+  transform: rotate(-2deg) scale(1.05); 
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+}
+
+.doodle-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(44, 44, 44, 0.6); 
+  backdrop-filter: blur(4px); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  animation: fadeIn 0.3s forwards;
+}
+
+.doodle-modal {
+  width: 90%;
+  max-width: 600px;
+  background-color: #fff;
+  background-image: linear-gradient(#cceeff 1px, transparent 1px);
+  background-size: 100% 25px; 
+  
+  padding: 40px;
+  position: relative;
+  
+  border: 3px solid var(--ink);
+  border-radius: 2px 255px 3px 25px / 255px 5px 225px 3px;
+  box-shadow: 10px 10px 0 rgba(0,0,0,0.2);
+  
+  transform: scale(0.8) rotate(-2deg);
+  animation: popIn 0.3s forwards;
+}
+
+.doodle-modal h2 {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 2.5rem;
+  margin-top: 0;
+  margin-bottom: 5px;
+  color: var(--ink);
+  background: linear-gradient(to top, rgba(255, 235, 59, 0.5) 40%, transparent 40%);
+  display: inline-block;
+}
+
+.doodle-modal h3 {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.5rem;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.doodle-modal ul {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.3rem;
+  line-height: 25px; 
+  list-style-type: none; 
+  padding-left: 10px;
+}
+
+.doodle-modal li {
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.doodle-modal li::before {
+  content: '➜';
+  margin-right: 10px;
+  color: var(--ink);
+}
+
+.close-scribble {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 2rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: var(--ink);
+  transition: transform 0.2s;
+}
+
+.close-scribble:hover {
+  transform: scale(1.2) rotate(90deg);
+  color: #f06a6a; 
+}
+
+/* 5. Button on the Polaroid Back */
+.read-more-btn {
+  margin-top: 15px;
+  background-color: white; 
+  color: var(--ink);
+  
+  border: 3px solid var(--ink);
+  box-shadow: 5px 5px 0 var(--ink); 
+  border-radius: 8px; 
+  
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 8px 15px;
+  cursor: pointer;
+  
+  transition: all 0.1s ease;
+  
+  user-select: none; 
+}
+
+/* HOVER STATE: It gets ready to be clicked */
+.read-more-btn:hover {
+  background-color: #f0f0f0; 
+  transform: translate(-1px, -1px); 
+  box-shadow: 6px 6px 0 var(--ink); 
+}
+
+/* ACTIVE STATE: THE "PUSH" EFFECT */
+.read-more-btn:active {
+  box-shadow: 0 0 0 var(--ink);
+  
+  transform: translate(5px, 5px);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popIn {
+  from { 
+    transform: scale(0.8) rotate(-5deg); 
+    opacity: 0;
+  }
+  to { 
+    transform: scale(1) rotate(-1deg); 
+    opacity: 1;
+  }
+}
+
+/* --- HIKING TRAIL LAYOUT --- */
+
+.trail-container {
+  position: relative;
+  width: 100%;
+  max-width: 1000px; 
+  margin: 0 auto;
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.trail-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  transform: translateX(-50%);
+  background-image: linear-gradient(to bottom, var(--ink) 50%, transparent 50%);
+  background-size: 4px 20px;
+  background-repeat: repeat-y;
+  opacity: 0.3;
+  z-index: 0;
+}
+
+.trail-stop {
+  position: relative;
+  width: 50%; 
+  display: flex;
+  box-sizing: border-box;
+  z-index: 1;
+  margin-bottom: -40px; 
+}
+
+.trail-stop .polaroid-doodle {
+  flex-shrink: 0; 
+}
+
+.trail-stop.left {
+  left: 0;
+  justify-content: flex-end; 
+  padding-right: 60px; 
+}
+
+.trail-stop.right {
+  left: 50%; 
+  justify-content: flex-start; 
+  padding-left: 60px; 
+}
+
+.trail-connector {
+  position: absolute;
+  top: 100px; 
+  height: 2px;
+  width: 60px;
+  background: none;
+  border-top: 3px dashed var(--ink);
+  opacity: 0.6;
+}
+
+.trail-stop.left .trail-connector {
+  right: 0; 
+  transform: rotate(10deg);
+}
+
+.trail-stop.right .trail-connector {
+  left: 0; 
+  transform: rotate(-10deg);
+}
+
+.trail-marker {
+  position: absolute;
+  top: 90px;
+  width: 16px;
+  height: 16px;
+  background: white;
+  border: 3px solid var(--ink);
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.trail-stop.left .trail-marker { right: -10px; }
+.trail-stop.right .trail-marker { left: -10px; }
