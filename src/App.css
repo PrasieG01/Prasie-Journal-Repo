@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Indie+Flower&family=Pangolin&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Indie+Flower&family=Pangolin&family=Press+Start+2P&display=swap');
 
 body, html {
   margin: 0;
@@ -40,6 +41,17 @@ body, html {
   margin: 0 auto;
 }
 
+.intro-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px; /* Space between picture and text */
+  min-height: 80vh; /* Takes up most of the screen */
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
 .profile-column {
   position: relative; 
   display: flex;
@@ -60,7 +72,7 @@ body, html {
 }
 
 .doodle-img {
-  width: 100%; height: 100%; object-fit: cover;
+  width: 100%; height: 105%; object-fit: fill;
 }
 
 .thought-bubble {
@@ -122,15 +134,6 @@ body, html {
   padding-left: 20px;
 }
 
-.arrow-pointer {
-  font-size: 3rem;
-  font-family: 'Patrick Hand', cursive;
-  color: var(--ink);
-  transform: rotate(150deg); 
-  margin-left: -40px;
-  margin-bottom: -20px;
-  opacity: 0.5;
-}
 
 .greeting-text {
   font-family: "Pangolin", cursive;
@@ -138,6 +141,7 @@ body, html {
   color: var(--ink);
   line-height: 1.1;
   margin-bottom: 20px;
+  margin-top: 80px;
 }
 
 .bio-text {
@@ -504,7 +508,6 @@ button.tab.active
 }
 
 /* --- HIKING TRAIL LAYOUT --- */
-
 .trail-container {
   position: relative;
   width: 100%;
@@ -587,3 +590,144 @@ button.tab.active
 
 .trail-stop.left .trail-marker { right: -10px; }
 .trail-stop.right .trail-marker { left: -10px; }
+
+
+/* --- DESK CONTAINER --- */
+.desk-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.svg-wrapper {
+  transition: all 0.3s ease;
+}
+
+/* Target IDs inside the SVG */
+#Laptop, #Totebag, #Headphones, #BOOKS, #IPhone, #Corkboard, #Boba, #Journal {
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+
+/* Hover effects (When NOT in spotlight mode) */
+.svg-wrapper:not(.spotlight-mode) #Laptop:hover,
+.svg-wrapper:not(.spotlight-mode) #Totebag:hover,
+.svg-wrapper:not(.spotlight-mode) #Headphones:hover,
+.svg-wrapper:not(.spotlight-mode) #BOOKS:hover,
+.svg-wrapper:not(.spotlight-mode) #IPhone:hover,
+.svg-wrapper:not(.spotlight-mode) #Corkboard:hover,
+.svg-wrapper:not(.spotlight-mode) #Boba:hover,
+.svg-wrapper:not(.spotlight-mode) #Journal:hover {
+  transform: translateY(-5px);
+  filter: drop-shadow(0px 5px 10px rgba(0,0,0,0.2));
+}
+
+/* --- SPOTLIGHT MODE LOGIC --- */
+
+/* 1. When Spotlight is ON, dim the WHOLE SVG slightly */
+.svg-wrapper.spotlight-mode svg {
+  opacity: 0.4; 
+}
+
+.svg-wrapper.spotlight-mode svg.active-Laptop #Laptop,
+.svg-wrapper.spotlight-mode svg.active-Totebag #Totebag,
+.svg-wrapper.spotlight-mode svg.active-Headphones #Headphones,
+.svg-wrapper.spotlight-mode svg.active-BOOKS #BOOKS,
+.svg-wrapper.spotlight-mode svg.active-IPhone #IPhone,
+.svg-wrapper.spotlight-mode svg.active-Corkboard #Corkboard,
+.svg-wrapper.spotlight-mode svg.active-Boba #Boba,
+.svg-wrapper.spotlight-mode svg.active-Journal #Journal {
+  opacity: 1 !important; /* Force visibility */
+  
+  /* THE WHITE BORDER & GLOW EFFECT */
+  filter: 
+    drop-shadow(0 0 2px rgb(135, 199, 238)) 
+    drop-shadow(0 0 5px rgb(115, 221, 232)) 
+    drop-shadow(0 0 15px rgba(125, 207, 239, 0.8));
+    
+  transform: scale(1.05); 
+  z-index: 100; 
+}
+
+/* --- THE POPUP CARD --- */
+.desk-popup-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 200; 
+  pointer-events: none; 
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.desk-popup-card {
+  pointer-events: auto; 
+  background: white;
+  padding: 30px;
+  width: 300px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3); 
+  
+  /* Pop In Animation */
+  animation: popupScale 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 2px solid #333; 
+}
+
+/* Text Styles */
+.desk-popup-card h3 {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.8rem;
+  margin-top: 0;
+  color: #333;
+}
+
+.desk-popup-card p {
+  font-family: 'Open Sans', sans-serif;
+  color: #666;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+/* The Navigate Button */
+.navigate-btn {
+  background: #333;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.navigate-btn:hover {
+  transform: scale(1.05);
+  background: #000;
+}
+
+/* Close 'X' Button */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #999;
+}
+.close-btn:hover { color: #333; }
+
+/* Animation Keyframes */
+@keyframes popupScale {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
