@@ -2,13 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Indie+Flower&family=Pangolin&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Indie+Flower&family=Pangolin&family=Press+Start+2P&display=swap');
 
-body, html {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-}
-
 .head-title {
   text-align: center;
   font-family: "Pangolin", cursive;
@@ -29,188 +22,18 @@ body, html {
   
 }
 
-/* --- HOME LAYOUT --- */
-.home-container {
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 60px; 
-  padding: 0 40px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.intro-container{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 50px; /* Space between picture and text */
-  min-height: 80vh; /* Takes up most of the screen */
-  width: 100%;
-  max-width: 1200px;
-  padding: 0 20px;
-}
-
-.profile-column {
-  position: relative; 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.doodle-avatar-frame {
-  width: 260px;
-  height: 260px;
-  background: white;
-  border: 4px solid #f9f8c1;
-  /* border: 4px solid var(--ink); */
-  border-radius: 50% 55% 45% 50% / 55% 50% 50% 45%; 
-  overflow: hidden;
-  box-shadow: 8px 8px 0 rgba(0,0,0,0.1);
-  z-index: 1;
-}
-
-.doodle-img {
-  width: 100%; height: 105%; object-fit: fill;
-}
-
-.thought-bubble {
-  position: absolute;
-  top: 260px;  
-  right: -70px; 
-  width: 220px;
-  padding: 25px;
-  background-color: white;
-  border: 3px solid var(--ink);
-  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
-  
-  text-align: center;
-  z-index: 2; 
-  box-shadow: 5px 5px 0 rgba(0,0,0,0.1);
-  
-  animation: floatBubble 3s ease-in-out infinite;
-}
-
-.bubble-tail {
-  position: absolute;
-  top: 40px; 
-  left: -25px; 
-  width: 10px; height: 10px;
-  background: white;
-  border: 3px solid var(--ink);
-  border-radius: 50%;
-}
-
-.bubble-tail::before {
-  content: '';
-  position: absolute;
-  top: 15px; left: -15px;
-  width: 15px; height: 15px;
-  background: white;
-  border: 3px solid var(--ink);
-  border-radius: 50%;
-}
-
-.bubble-text-small {
-  font-family: 'Patrick Hand', cursive;
-  font-size: 1rem;
-  color: #666;
+body, html {
   margin: 0;
-  transform: rotate(-2deg);
+  padding: 0;
+  height: 100%;
 }
 
-.bubble-name {
-  font-family: 'Patrick Hand', cursive;
-  font-size: 2.5rem;
-  color: var(--ink);
-  margin: 0;
-  line-height: 1.2;
-  transform: rotate(-1deg);
-}
-
-.text-column {
-  max-width: 450px;
-  padding-left: 20px;
-}
-
-
-.greeting-text {
-  font-family: "Pangolin", cursive;
-  font-size: 3rem;
-  color: var(--ink);
-  line-height: 1.1;
-  margin-bottom: 20px;
-  margin-top: 80px;
-}
-
-.bio-text {
-  font-family: 'Patrick Hand', cursive;
-  font-size: 1.4rem;
-  color: #555;
-  line-height: 1.5;
-}
-
-.highlight {
-  background: linear-gradient(to top, #fff9c4 40%, transparent 40%);
-  padding: 0 5px;
-}
-
-
-@keyframes floatBubble {
-  0% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-5px) rotate(1deg); }
-  100% { transform: translateY(0px) rotate(0deg); }
-}
-
-/* Mobile Fix */
-@media (max-width: 768px) {
-  .home-container {
-    flex-direction: column;
-    padding-top: 50px;
-    gap: 100px; 
-  }
-  .thought-bubble {
-    top: 240px; 
-    right: auto; 
-    left: 50%; 
-    transform: translateX(-50%);
-  }
-  .arrow-pointer { display: none; }
-}
-
-.image-wrapper
-{
-  display: flex;
-  justify-content: center;
-  margin-left: -50px;
-  height: 400px;
-  width:400px;
-  margin-top: 30px;
-}
-
-.content-row
-{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.page-content {
-  display: flex;
-  flex-direction: column; 
-  justify-content: flex-start; 
-  align-items: center; 
-  width: 100%;
+.journal-container {
+  background-color: #f2eac3;
   min-height: 100vh;
-}
-
-.journal-container
-{
-    background-color: #ffffff; 
-    background-image: radial-gradient(circle, #a0a0a0 1px, transparent 1px);
-    background-size: 30px 30px;
+  width: 100%;
+  padding-top: 1px; 
+  box-sizing: border-box;
 }
 
 .sidebar {
@@ -591,143 +414,117 @@ button.tab.active
 .trail-stop.left .trail-marker { right: -10px; }
 .trail-stop.right .trail-marker { left: -10px; }
 
+/* --- CONTAINER --- */
 
-/* --- DESK CONTAINER --- */
 .desk-container {
-  position: relative;
   width: 100%;
-  max-width: 1200px;
+  max-width: 900px; 
   margin: 0 auto;
 }
 
-.svg-wrapper {
-  transition: all 0.3s ease;
+.desk-wrapper {
+  position: relative; 
+  width: 100%;
+  aspect-ratio: 1434 / 800; 
 }
 
-/* Target IDs inside the SVG */
-#Laptop, #Totebag, #Headphones, #BOOKS, #IPhone, #Corkboard, #Boba, #Journal {
-  cursor: pointer;
-  transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
-  transform-origin: center;
-}
-
-/* Hover effects (When NOT in spotlight mode) */
-.svg-wrapper:not(.spotlight-mode) #Laptop:hover,
-.svg-wrapper:not(.spotlight-mode) #Totebag:hover,
-.svg-wrapper:not(.spotlight-mode) #Headphones:hover,
-.svg-wrapper:not(.spotlight-mode) #BOOKS:hover,
-.svg-wrapper:not(.spotlight-mode) #IPhone:hover,
-.svg-wrapper:not(.spotlight-mode) #Corkboard:hover,
-.svg-wrapper:not(.spotlight-mode) #Boba:hover,
-.svg-wrapper:not(.spotlight-mode) #Journal:hover {
-  transform: translateY(-5px);
-  filter: drop-shadow(0px 5px 10px rgba(0,0,0,0.2));
-}
-
-/* --- SPOTLIGHT MODE LOGIC --- */
-
-/* 1. When Spotlight is ON, dim the WHOLE SVG slightly */
-.svg-wrapper.spotlight-mode svg {
-  opacity: 0.4; 
-}
-
-.svg-wrapper.spotlight-mode svg.active-Laptop #Laptop,
-.svg-wrapper.spotlight-mode svg.active-Totebag #Totebag,
-.svg-wrapper.spotlight-mode svg.active-Headphones #Headphones,
-.svg-wrapper.spotlight-mode svg.active-BOOKS #BOOKS,
-.svg-wrapper.spotlight-mode svg.active-IPhone #IPhone,
-.svg-wrapper.spotlight-mode svg.active-Corkboard #Corkboard,
-.svg-wrapper.spotlight-mode svg.active-Boba #Boba,
-.svg-wrapper.spotlight-mode svg.active-Journal #Journal {
-  opacity: 1 !important; /* Force visibility */
-  
-  /* THE WHITE BORDER & GLOW EFFECT */
-  filter: 
-    drop-shadow(0 0 2px rgb(135, 199, 238)) 
-    drop-shadow(0 0 5px rgb(115, 221, 232)) 
-    drop-shadow(0 0 15px rgba(125, 207, 239, 0.8));
-    
-  transform: scale(1.05); 
-  z-index: 100; 
-}
-
-/* --- THE POPUP CARD --- */
-.desk-popup-overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 200; 
-  pointer-events: none; 
+.desk-bg {
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  object-fit: cover;
+  display: block;
 }
 
-.desk-popup-card {
-  pointer-events: auto; 
-  background: white;
-  padding: 30px;
-  width: 300px;
-  border-radius: 15px;
-  text-align: center;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.3); 
+.desk-item {
+  position: absolute; 
+  cursor: pointer;
+  z-index: 10;
   
-  /* Pop In Animation */
-  animation: popupScale 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  border: 2px solid #333; 
+  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              filter 0.2s ease;
+  transform-origin: center bottom;
 }
 
-/* Text Styles */
-.desk-popup-card h3 {
-  font-family: 'Patrick Hand', cursive;
-  font-size: 1.8rem;
-  margin-top: 0;
-  color: #333;
+.desk-item:hover {
+  z-index: 20;
+  transform: translateY(-0px) scale(0.98); 
+  
+  /* 2. THE GLOW (Soft & White) */
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.8)) 
+          drop-shadow(0 8px 15px rgba(0,0,0,0.2));
 }
 
-.desk-popup-card p {
-  font-family: 'Open Sans', sans-serif;
-  color: #666;
-  margin-bottom: 25px;
-  line-height: 1.5;
+.desk-item:active {
+  transform: translateY(-1px) scale(0.98);
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.5));
 }
 
-/* The Navigate Button */
-.navigate-btn {
-  background: #333;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-family: 'Patrick Hand', cursive;
-  font-size: 1.1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: transform 0.2s;
+
+.desk-item img {
+  width: 100%; 
+  height: auto; 
+  display: block;
 }
 
-.navigate-btn:hover {
-  transform: scale(1.05);
-  background: #000;
+#Corkboard {
+  top: 14%;
+  left: 0%;
+  width: 40%;
+  z-index: 1;
 }
 
-/* Close 'X' Button */
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #999;
+#Totebag {
+  top: 1.9%;
+  left: 67%;
+  width: 13.8%;
+  z-index: 2;
 }
-.close-btn:hover { color: #333; }
 
-/* Animation Keyframes */
-@keyframes popupScale {
-  from { opacity: 0; transform: scale(0.8); }
-  to { opacity: 1; transform: scale(1); }
+#Laptop {
+  top: 39.8%;
+  left: 37%;
+  width: 27%;
+  z-index: 5; /* Higher z-index to sit on top of table */
+}
+
+#Boba {
+  top: 52.4%;
+  left: 63%;
+  width: 8%;
+  z-index: 6; 
+}
+
+#BOOKS {
+  top: 50.9%;
+  left: 6.7%;
+  width: 18.1%;
+  z-index: 2;
+}
+
+#Headphones {
+  top: 53.4%;
+  left: 24.2%;
+  width: 11.3%;
+  z-index: 3;
+}
+
+#Journal {
+  top: 61.9%;
+  left: 70.2%;
+  width: 7.2%;
+  z-index: 6;
+}
+
+#IPhone {
+  top: 63.5%;
+  left: 82.2%;
+  width: 8.8%;
+  z-index: 6;
+}
+
+/* --- 4. THE POP EFFECT --- */
+.desk-item:hover {
+  z-index: 20; 
+  transform: scale(1.1) translateY(-5px);
+  filter: drop-shadow(0 0 0 3px white) drop-shadow(0 10px 20px rgba(0,0,0,0.3));
 }
