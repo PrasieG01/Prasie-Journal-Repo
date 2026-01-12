@@ -528,101 +528,87 @@ button.tab.active
   to { transform: scale(1); opacity: 1; }
 }
 
-.hand-drawn-label {
+.hand-drawn-wrapper {
   position: absolute;
-  top: 90%;  
-  left: 70%; 
-  width: 30px;
-  
-  /* HIDE IT BY DEFAULT */
-  opacity: 0;
-  visibility: hidden; 
-  
-  /* Smooth Fade In */
-  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
-  pointer-events: none; 
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  top: 0; 
+  left: 0;
+  width: 100%; 
+  height: 100%; 
+  pointer-events: none; /* Let clicks pass through */
   z-index: 100;
+  
+  /* HIDE DEFAULT */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out;
 }
 
-/* --- SHOW ON HOVER --- */
-.desk-item:hover .hand-drawn-label {
-  opacity: 3;
+/* SHOW ON HOVER */
+.desk-item:hover .hand-drawn-wrapper {
+  opacity: 1;
   visibility: visible;
-  transform: translateY(-10px); 
 }
 
-/* --- TEXT STYLING --- */
-.label-text {
-  font-family: 'Patrick Hand', cursive; 
-  font-size: 1.2rem; 
-  color: #000;    /* Black text looks like ink */
-  transform: rotate(-5deg);
-}
-
-.arrow-wrapper {
-  margin-left: -20px; 
-  margin-bottom: -5px;
+/* --- THE FLOATING ELEMENTS --- */
+.arrow-container, .label-container {
+  position: absolute; 
+  width: max-content; 
 }
 
 .arrow-img {
   width: 50px; 
   height: auto;
-  opacity: 1;
-  transform: rotate(120deg); 
+  opacity: 0.9;
 }
 
-/* .desk-container {
-  width: 100%;
-  max-width: 900px; 
-  margin: 0 auto;
+.label-text {
+  font-family: 'Patrick Hand', cursive; 
+  font-size: 1rem; 
+  color: #000;
+  text-shadow: 1px 1px 0px rgba(255,255,255,0.4);
 }
 
-.desk-wrapper {
-  position: relative; 
-  width: 100%;
-  aspect-ratio: 1434 / 800; 
+/* --- INFO POPUP STYLES --- */
+.info-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
 }
 
-.desk-bg {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+.info-text {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
 }
 
-.desk-item {
-  position: absolute; 
+.popup-cta-btn {
+  background-color: #333; 
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 30px; 
+  font-size: 0.95rem;
+  font-weight: 600;
   cursor: pointer;
-  z-index: 10;
-  
-  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-              filter 0.2s ease;
-  transform-origin: center bottom;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px; 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-.desk-item:hover {
-  z-index: 20;
-  transform: translateY(-0px) scale(0.98);  */
-  
-  /* 2. THE GLOW (Soft & White) */
-  /* filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.8)) 
-          drop-shadow(0 8px 15px rgba(0,0,0,0.2));
-} */
+.popup-cta-btn:hover {
+  background-color: #000;
+  transform: translateY(-2px); 
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
 
-/* .desk-item:active {
-  transform: translateY(-1px) scale(0.98);
-  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.5));
-} */
+.popup-cta-btn:active {
+  transform: translateY(0);
+}
 
-
-/* .desk-item img {
-  width: 100%; 
-  height: auto; 
-  display: block;
-} */
 
 #Corkboard {
   top: 14%;
@@ -642,7 +628,7 @@ button.tab.active
   top: 39.8%;
   left: 37%;
   width: 27%;
-  z-index: 5; /* Higher z-index to sit on top of table */
+  z-index: 5; 
 }
 
 #Boba {
@@ -679,10 +665,3 @@ button.tab.active
   width: 8.8%;
   z-index: 6;
 }
-
-/* --- 4. THE POP EFFECT --- */
-/* .desk-item:hover {
-  z-index: 20; 
-  transform: scale(1.1) translateY(-5px);
-  filter: drop-shadow(0 0 0 3px white) drop-shadow(0 10px 20px rgba(0,0,0,0.3));
-} */

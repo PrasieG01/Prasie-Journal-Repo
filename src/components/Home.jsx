@@ -1,7 +1,7 @@
 import React from 'react';
 import InteractiveDesk from '../components/InteractiveDesk'; 
 
-function Home() {
+function Home({ onNavigate }) {
   return (
     <div className="app-wrapper light-mode">
       <div className="main-page-wrapper">
@@ -10,7 +10,7 @@ function Home() {
         
         {/* THE DESK */}
         <div className="desk-section" style={{ marginTop: '50px', marginBottom: '100px' }}>
-           <InteractiveDesk />
+          <InteractiveDesk onNavigate={onNavigate} />        
         </div>
 
         {/* About Preview Section... */}

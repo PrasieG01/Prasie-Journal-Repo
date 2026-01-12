@@ -10,11 +10,11 @@ function App() {
   const [activePage, setActivePage] = useState('home');
 
   return (
+    
     <div className="journal-container">
-      
       <main className="paper-background">
         
-        {activePage === 'home' && <Home />}
+        {activePage === 'home' && <Home onNavigate={setActivePage} />}        
         {activePage === 'about' && <AboutMe />}
         {activePage === 'experiences' && <Experiences />}
         {activePage === 'contact' && <Contact />}
@@ -41,6 +41,7 @@ function App() {
 
       </nav>
     </div>
+    
   );
 }
 
