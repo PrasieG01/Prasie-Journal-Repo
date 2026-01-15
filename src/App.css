@@ -568,7 +568,6 @@ button.tab.active
   text-shadow: 1px 1px 0px rgba(255,255,255,0.4);
 }
 
-/* --- INFO POPUP STYLES --- */
 .info-content {
   display: flex;
   flex-direction: column;
@@ -664,4 +663,108 @@ button.tab.active
   left: 82.2%;
   width: 8.8%;
   z-index: 6;
+}
+
+.contact-doodle-container {
+  width: 90%;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.socials-header {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.doodle-heading {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.social-icons-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.doodle-social-icon {
+  color: #333;
+  transition: transform 0.2s ease;
+  filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.1)); 
+}
+
+.doodle-social-icon:hover {
+  color: #000;
+  transform: translateY(-3px) rotate(-5deg); 
+}
+
+.doodle-divider {
+  border: 0;
+  height: 2px;
+  background: #333;
+  border-radius: 50%; 
+  width: 80%;
+  margin: 10px auto 20px auto;
+  opacity: 0.2;
+}
+
+.form-group {
+  margin-bottom: -20px;
+
+}
+
+.doodle-send-btn:hover {
+  background: #000;
+  transform: translateY(-2px) rotate(1deg);
+  box-shadow: 3px 3px 0px rgba(0,0,0,0.3);
+}
+
+.form-group.compact {
+  margin-bottom: 20px; 
+}
+
+.form-group.compact label {
+  font-size: 0.9rem; 
+  margin-bottom: 20px; 
+  margin-left: 8px;
+}
+
+.doodle-input {
+  width: 100%;
+  padding: 6px 10px; 
+  font-family: 'Patrick Hand', cursive;
+  font-size: 0.95rem; 
+  border: 2px solid #333;
+  background: #fffdf0;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  outline: none;
+}
+
+.doodle-input.textarea {
+  resize: none; 
+  height: auto; 
+}
+
+.doodle-send-btn.compact-btn {
+  font-size: 1rem;
+  width: 30%;
+  background: #333;
+  color: white;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.3rem;
+  border: none;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.2s ease;
+  margin-top: 40px;
+  margin-left: 120px;
+}
+
+.doodle-divider {
+  margin: 5px auto 10px auto; 
 }

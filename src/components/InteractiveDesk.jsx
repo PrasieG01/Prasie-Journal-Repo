@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
-import { X } from 'lucide-react';
-
+import React, { useState, useRef } from 'react';
+import { X, Send } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 /* --- ASSETS --- */
 import deskBg from '../assets/Table.png';
 import laptopImg from '../assets/Laptop.png';
@@ -10,7 +10,10 @@ import arrowImg from '../assets/down-arrow.png';
 import corkImg from '../assets/Corkboard.png';
 // import bobaImg from '../assets/Boba.png';
 // import booksImg from '../assets/BOOKS.png';
-// import phoneImg from '../assets/IPhone.png';
+import phoneImg from '../assets/IPhone.png';
+import githubDoodle from '../assets/github.png';
+import linkedinDoodle from '../assets/linkedin.png';
+import emailDoodle from '../assets/gmail.png';
 // import headphonesImg from '../assets/Headphones.png';
 
 import html_icon from '../assets/html_icon.jpg';
@@ -26,7 +29,28 @@ import aws_icon from '../assets/aws_icon.jpg';
 
 
 const InteractiveDesk = ({ onNavigate }) => {
+  const formRef = useRef();
   const [selectedItem, setSelectedItem] = useState(null);
+  const [status, setStatus] = useState('idle'); // 'idle' | 'sending' | 'success' | 'error'
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setStatus('sending');
+
+    emailjs.sendForm(
+      'service_dgcg2wt',   
+      'template_i5nx8pe',  
+      formRef.current,
+      '4fNbSDSqNxAnxg2Ij'    
+    )
+    .then((result) => {
+        console.log(result.text);
+        setStatus('success');
+        setTimeout(() => setStatus('idle'), 3000); 
+    }, (error) => {
+        console.log(error.text);
+        setStatus('error');
+    });
+  };
 
   // CALCULATED POSITIONS
   // Base Width: 1434px | Base Height: 800px
@@ -118,20 +142,36 @@ const items = [
 
     style: { top: '0%', left: '0%', width: '60%', zIndex: 1 } 
   },
-//   {
-//     id: 'IPhone', 
-//     img: phoneImg, 
-//     label: "Let's connect!",
-//     title: "Connect with me",
-//     type: "icons",
+  {
+    id: 'IPhone', 
+    img: phoneImg, 
+    handLabel: "Say hi!",
+    type: "contact",
    
-//     data: [
-//       { name: "LinkedIn", icon: linkedin_icon },
-//       { name: "GitHub", icon: github_icon },
-//       { name: "Email", icon: email_icon },
-//       { name: "Website", icon: portfolio_icon },
-//     ],
-//   }
+    socials: [
+      { name: 'LinkedIn', link: 'https://www.linkedin.com/in/prasamsha-gyenwali/'},
+      { name: 'GitHub', link: 'https://github.com/PrasieG01'},
+      { name: 'Email', link: 'mailto:gyenwaliprasamsha@gmail.com' },
+      { name: 'Website', link: 'https://www.linkedin.com/in/prasamsha-gyenwali/' },
+    ],
+
+    arrowStyle: 
+    { 
+      top: '95%',   
+      left: '50%',  
+      width: '8%',
+      transform: 'rotate(120deg)' 
+    },
+
+    labelStyle: 
+    { 
+      top: '110%',   
+      left: '50%',  
+      width: '10%',
+      transform: 'rotate(-36deg)',
+    },
+    style: { top: '60%', left: '75%', width: '12%', zIndex: 5 }
+  }
 ];
 
 return (
@@ -216,6 +256,71 @@ return (
               {selectedItem.cta.text} ➜
             </a>
           )}
+  </div>
+)}
+
+{selectedItem.type === 'contact' && (
+  <div className="contact-doodle-container">
+    <div className="socials-header">
+      <h3 className="doodle-heading">Connect with me:</h3>
+      <div className="social-icons-row">
+        {selectedItem.socials.map((social) => (
+          <a 
+            key={social.name}
+            href={social.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="doodle-social-icon"
+            title={social.name}
+          >
+            {social.name === 'GitHub' && (
+     <img src={githubDoodle} alt="GitHub" width="30" />
+            )}
+            {social.name === 'LinkedIn' && (
+     <img src={linkedinDoodle} alt="LinkedIn" width="30" />
+            )}
+            {social.name === 'Email' && (
+     <img src={emailDoodle} alt="Email" width="30" />
+            )}
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <hr className="doodle-divider" />
+
+    <form className="doodle-form" ref={formRef} onSubmit={sendEmail}>
+      
+    <div className="form-group compact">
+      <label>Name:</label>
+      <input type="text" className="doodle-input" placeholder="Name" />
+    </div>
+
+      <div className="form-group compact">
+      <label>Email:</label>
+      <input type="email" className="doodle-input" placeholder="Email" />
+    </div>
+
+    <div className="form-group compact">
+    <label>Your Message:</label>
+    <textarea 
+       className="doodle-input textarea" 
+       placeholder="I'd like to chat about..." 
+       rows="3" 
+    ></textarea>
+    </div>
+      <button 
+    type="submit" 
+    className="doodle-send-btn compact-btn"
+    disabled={status === 'sending' || status === 'success'}
+  >
+    {status === 'idle' && <>Send It <Send size={16} /></>}
+    {status === 'sending' && 'Sending...'}
+    {status === 'success' && 'Sent! ✅'}
+    {status === 'error' && 'Failed ❌'}
+  </button>
+
+    </form>
   </div>
 )}
             </div>
