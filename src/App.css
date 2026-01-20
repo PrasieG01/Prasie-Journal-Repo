@@ -1,17 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Indie+Flower&family=Pangolin&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Indie+Flower&family=Pangolin&family=Press+Start+2P&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Indie+Flower&family=Pangolin&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Indie+Flower&family=Pangolin&family=Press+Start+2P&display=swap");
 
 .head-title {
   text-align: center;
   font-family: "Pangolin", cursive;
   margin: 15px 0;
   color: var(--ink);
-  background: linear-gradient(to top, rgba(255, 235, 59, 0.5) 40%, transparent 40%);
 }
 
 .body-text {
-  font-family: 'Patrick Hand', cursive;
+  font-family: "Patrick Hand", cursive;
   font-size: 1.2rem;
   line-height: 1.6;
   align-items: center;
@@ -19,21 +18,31 @@
   max-width: 600px;
   width: 90%;
   margin: 0 auto;
-  
 }
 
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   height: 100%;
+  background-color: white;
 }
 
 .journal-container {
-  background-color: #f2eac3;
   min-height: 100vh;
   width: 100%;
-  padding-top: 1px; 
+  padding-top: 1px;
   box-sizing: border-box;
+}
+
+.bg-yellow {
+  background-color: #fcf6e0;
+}
+
+.bg-dotted {
+  background-color: #fafafa;
+  background-image: radial-gradient(#b0bec5 2px, transparent 2px);
+  background-size: 55px 55px;
 }
 
 .sidebar {
@@ -45,67 +54,74 @@ body, html {
   gap: 10px;
   z-index: 10;
   margin-right: -15px;
-
 }
 
 button.tab {
   width: 50px;
   height: 120px;
-  border-radius: 0 10px 10px 0; 
+  border-radius: 0 10px 10px 0;
   writing-mode: vertical-rl;
   text-orientation: mixed;
-  transform: rotate(180deg); 
-  font-family: 'Patrick Hand', cursive;
+  transform: rotate(180deg);
+  font-family: "Patrick Hand", cursive;
   font-size: 1.1rem;
   color: #ffffff;
   box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, width 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    width 0.3s ease;
   border: none;
   cursor: pointer;
 }
 
 button.tab:hover {
-  transform: rotate(180deg) translateX(10px); 
+  transform: rotate(180deg) translateX(10px);
   width: 60px;
 }
 
-button.tab.active
-{
+button.tab.active {
   margin-right: 0;
   width: 65px;
   box-shadow: -4px 4px 10px rgba(7, 7, 7, 0.3);
 }
 
-.tab.home {background-color: #f7c1f9;}
-.tab.about {background-color: #9ba3f8;}
-.tab.experiences {background-color: #d6f9c1;}
-.tab.contact {background-color: #f4a89b;}
-
+.tab.home {
+  background-color: #f7c1f9;
+}
+.tab.about {
+  background-color: #9ba3f8;
+}
+.tab.experiences {
+  background-color: #d6f9c1;
+}
+.tab.contact {
+  background-color: #f4a89b;
+}
 
 :root {
-  --ink: #2c2c2c;       
-  --paper: #fcfcfc;     
-  --tape: rgba(255, 248, 225, 0.8); 
+  --ink: #2c2c2c;
+  --paper: #fcfcfc;
+  --tape: rgba(255, 248, 225, 0.8);
 }
 
 .polaroid-doodle {
   width: 260px;
   background-color: white;
-  padding: 15px 15px 50px 15px; 
+  padding: 15px 15px 50px 15px;
   position: relative;
   cursor: pointer;
-  
+
   border: 3px solid var(--ink);
   border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
-  
-  box-shadow: 6px 6px 0 rgba(0,0,0,0.15); 
-  
+
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.15);
+
   transition: transform 0.2s ease;
 }
 
 .polaroid-doodle:hover {
-  transform: scale(1.02) rotate(-1deg) !important; 
-  box-shadow: 8px 8px 0 rgba(0,0,0,0.2);
+  transform: scale(1.02) rotate(-1deg) !important;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .photo-sketch {
@@ -113,7 +129,7 @@ button.tab.active
   height: 220px;
   background-color: #eee;
   overflow: hidden;
-  
+
   border: 2px solid var(--ink);
   border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
 }
@@ -127,9 +143,8 @@ button.tab.active
 }
 
 .polaroid-doodle:hover .photo-sketch img {
-  filter: grayscale(0%) contrast(100%); 
+  filter: grayscale(0%) contrast(100%);
 }
-
 
 .washi-tape {
   position: absolute;
@@ -138,23 +153,48 @@ button.tab.active
   width: 90px;
   height: 30px;
   background-color: var(--tape);
-  border-left: 1px dashed rgba(0,0,0,0.1);
-  border-right: 1px dashed rgba(0,0,0,0.1);
-  
-  clip-path: polygon(0% 5%, 5% 0%, 15% 5%, 25% 0%, 35% 5%, 45% 0%, 55% 5%, 65% 0%, 75% 5%, 85% 0%, 95% 5%, 100% 0%, 100% 95%, 95% 100%, 85% 95%, 75% 100%, 65% 95%, 55% 100%, 45% 95%, 35% 100%, 25% 95%, 15% 100%, 5% 95%, 0% 100%);
-  
+  border-left: 1px dashed rgba(0, 0, 0, 0.1);
+  border-right: 1px dashed rgba(0, 0, 0, 0.1);
+
+  clip-path: polygon(
+    0% 5%,
+    5% 0%,
+    15% 5%,
+    25% 0%,
+    35% 5%,
+    45% 0%,
+    55% 5%,
+    65% 0%,
+    75% 5%,
+    85% 0%,
+    95% 5%,
+    100% 0%,
+    100% 95%,
+    95% 100%,
+    85% 95%,
+    75% 100%,
+    65% 95%,
+    55% 100%,
+    45% 95%,
+    35% 100%,
+    25% 95%,
+    15% 100%,
+    5% 95%,
+    0% 100%
+  );
+
   opacity: 0.8;
   z-index: 10;
   transform: rotate(-2deg);
 }
 
 .marker-caption {
-  font-family: 'Patrick Hand', cursive; 
+  font-family: "Patrick Hand", cursive;
   font-size: 1.4rem;
   color: var(--ink);
   text-align: center;
   margin-top: 15px;
-  transform: rotate(-1deg); 
+  transform: rotate(-1deg);
 }
 
 .polaroid-back-doodle {
@@ -164,31 +204,31 @@ button.tab.active
   align-items: center;
   height: 100%;
   text-align: center;
-  font-family: 'Patrick Hand', cursive;
+  font-family: "Patrick Hand", cursive;
   padding: 10px;
 }
 
 .doodle-github-link {
   display: inline-block;
-  margin-bottom: 10px; 
-  font-family: 'Patrick Hand', cursive;
+  margin-bottom: 10px;
+  font-family: "Patrick Hand", cursive;
   font-size: 0.9rem;
   text-decoration: none;
   color: #333;
   background-color: #fff;
-  
+
   border: 2px solid #333;
   border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
   padding: 5px 12px;
-  
+
   transition: all 0.2s ease;
 }
 
 .doodle-github-link:hover {
   background-color: #333;
   color: #fff;
-  transform: rotate(-2deg) scale(1.05); 
-  box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+  transform: rotate(-2deg) scale(1.05);
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
 }
 
 .doodle-overlay {
@@ -197,8 +237,8 @@ button.tab.active
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(44, 44, 44, 0.6); 
-  backdrop-filter: blur(4px); 
+  background-color: rgba(44, 44, 44, 0.6);
+  backdrop-filter: blur(4px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -212,41 +252,45 @@ button.tab.active
   max-width: 600px;
   background-color: #fff;
   background-image: linear-gradient(#cceeff 1px, transparent 1px);
-  background-size: 100% 25px; 
-  
+  background-size: 100% 25px;
+
   padding: 40px;
   position: relative;
-  
+
   border: 3px solid var(--ink);
   border-radius: 2px 255px 3px 25px / 255px 5px 225px 3px;
-  box-shadow: 10px 10px 0 rgba(0,0,0,0.2);
-  
+  box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.2);
+
   transform: scale(0.8) rotate(-2deg);
   animation: popIn 0.3s forwards;
 }
 
 .doodle-modal h2 {
-  font-family: 'Patrick Hand', cursive;
+  font-family: "Patrick Hand", cursive;
   font-size: 2.5rem;
   margin-top: 0;
   margin-bottom: 5px;
   color: var(--ink);
-  background: linear-gradient(to top, rgba(255, 235, 59, 0.5) 40%, transparent 40%);
+  background: linear-gradient(
+    to top,
+    rgba(255, 235, 59, 0.5) 40%,
+    transparent 40%
+  );
   display: inline-block;
 }
 
 .doodle-modal h3 {
-  font-family: 'Patrick Hand', cursive;
+  font-family: "Patrick Hand", cursive;
   font-size: 1.5rem;
   color: #555;
   margin-bottom: 30px;
 }
 
 .doodle-modal ul {
-  font-family: 'Patrick Hand', cursive;
+  font-family: "Patrick Hand", cursive;
   font-size: 1.3rem;
-  line-height: 25px; 
-  list-style-type: none; 
+  line-height: 25px;
+  list-style-type: none;
   padding-left: 10px;
 }
 
@@ -256,7 +300,7 @@ button.tab.active
 }
 
 .doodle-modal li::before {
-  content: '➜';
+  content: "➜";
   margin-right: 10px;
   color: var(--ink);
 }
@@ -265,7 +309,7 @@ button.tab.active
   position: absolute;
   top: 15px;
   right: 20px;
-  font-family: 'Patrick Hand', cursive;
+  font-family: "Patrick Hand", cursive;
   font-size: 2rem;
   cursor: pointer;
   background: none;
@@ -276,56 +320,60 @@ button.tab.active
 
 .close-scribble:hover {
   transform: scale(1.2) rotate(90deg);
-  color: #f06a6a; 
+  color: #f06a6a;
 }
 
 /* 5. Button on the Polaroid Back */
 .read-more-btn {
   margin-top: 15px;
-  background-color: white; 
+  background-color: white;
   color: var(--ink);
-  
+
   border: 3px solid var(--ink);
-  box-shadow: 5px 5px 0 var(--ink); 
-  border-radius: 8px; 
-  
-  font-family: 'Patrick Hand', cursive;
+  box-shadow: 5px 5px 0 var(--ink);
+  border-radius: 8px;
+
+  font-family: "Patrick Hand", cursive;
   font-size: 1.1rem;
   font-weight: bold;
   padding: 8px 15px;
   cursor: pointer;
-  
+
   transition: all 0.1s ease;
-  
-  user-select: none; 
+
+  user-select: none;
 }
 
 /* HOVER STATE: It gets ready to be clicked */
 .read-more-btn:hover {
-  background-color: #f0f0f0; 
-  transform: translate(-1px, -1px); 
-  box-shadow: 6px 6px 0 var(--ink); 
+  background-color: #f0f0f0;
+  transform: translate(-1px, -1px);
+  box-shadow: 6px 6px 0 var(--ink);
 }
 
 /* ACTIVE STATE: THE "PUSH" EFFECT */
 .read-more-btn:active {
   box-shadow: 0 0 0 var(--ink);
-  
+
   transform: translate(5px, 5px);
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes popIn {
-  from { 
-    transform: scale(0.8) rotate(-5deg); 
+  from {
+    transform: scale(0.8) rotate(-5deg);
     opacity: 0;
   }
-  to { 
-    transform: scale(1) rotate(-1deg); 
+  to {
+    transform: scale(1) rotate(-1deg);
     opacity: 1;
   }
 }
@@ -334,7 +382,7 @@ button.tab.active
 .trail-container {
   position: relative;
   width: 100%;
-  max-width: 1000px; 
+  max-width: 1000px;
   margin: 0 auto;
   padding: 40px 0;
   display: flex;
@@ -357,32 +405,32 @@ button.tab.active
 
 .trail-stop {
   position: relative;
-  width: 50%; 
+  width: 50%;
   display: flex;
   box-sizing: border-box;
   z-index: 1;
-  margin-bottom: -40px; 
+  margin-bottom: -40px;
 }
 
 .trail-stop .polaroid-doodle {
-  flex-shrink: 0; 
+  flex-shrink: 0;
 }
 
 .trail-stop.left {
   left: 0;
-  justify-content: flex-end; 
-  padding-right: 60px; 
+  justify-content: flex-end;
+  padding-right: 60px;
 }
 
 .trail-stop.right {
-  left: 50%; 
-  justify-content: flex-start; 
-  padding-left: 60px; 
+  left: 50%;
+  justify-content: flex-start;
+  padding-left: 60px;
 }
 
 .trail-connector {
   position: absolute;
-  top: 100px; 
+  top: 100px;
   height: 2px;
   width: 60px;
   background: none;
@@ -391,12 +439,12 @@ button.tab.active
 }
 
 .trail-stop.left .trail-connector {
-  right: 0; 
+  right: 0;
   transform: rotate(10deg);
 }
 
 .trail-stop.right .trail-connector {
-  left: 0; 
+  left: 0;
   transform: rotate(-10deg);
 }
 
@@ -411,20 +459,24 @@ button.tab.active
   z-index: 2;
 }
 
-.trail-stop.left .trail-marker { right: -10px; }
-.trail-stop.right .trail-marker { left: -10px; }
+.trail-stop.left .trail-marker {
+  right: -10px;
+}
+.trail-stop.right .trail-marker {
+  left: -10px;
+}
 
 /* --- DESK CONTAINER --- */
 .desk-container {
   width: 100%;
-  max-width: 1000px; 
+  max-width: 1000px;
   margin: 0 auto;
 }
 
 .desk-wrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 1434 / 800; 
+  aspect-ratio: 1434 / 800;
 }
 
 .desk-bg {
@@ -438,7 +490,9 @@ button.tab.active
 .desk-item {
   position: absolute;
   cursor: pointer;
-  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.2s ease;
+  transition:
+    transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    filter 0.2s ease;
   transform-origin: center bottom;
 }
 
@@ -451,18 +505,19 @@ button.tab.active
 /* The Hover Effect (Subtle Pop) */
 .desk-item:hover {
   transform: translateY(-4px) scale(1.02);
-  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.8)) 
-          drop-shadow(0 8px 15px rgba(0,0,0,0.2));
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.8))
+    drop-shadow(0 8px 15px rgba(0, 0, 0, 0.2));
   z-index: 20;
 }
-
 
 /* --- POPUP & STICKERS --- */
 .popup-overlay {
   position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  background: rgba(0,0,0,0.4);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(5px);
   display: flex;
   justify-content: center;
@@ -481,22 +536,24 @@ button.tab.active
   position: relative;
   text-align: center;
   animation: popUp 0.3s ease;
-  font-family: 'Patrick Hand', cursive;
+  font-family: "Patrick Hand", cursive;
 
   border: 3px solid var(--ink);
   border-radius: 2px 255px 3px 25px / 255px 5px 225px 3px;
-  box-shadow: 10px 10px 0 rgba(0,0,0,0.2);
-  
+  box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.2);
+
   transform: scale(0.8) rotate(1deg);
   animation: popIn 0.3s forwards;
 }
 
-
 .close-btn {
   position: absolute;
-  top: 10px; right: 10px;
-  background: none; border: none;
-  cursor: pointer; color: #533de4;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #533de4;
 }
 
 /* The Sticker Grid */
@@ -520,52 +577,56 @@ button.tab.active
 .sticker-name {
   font-size: 0.8rem;
   color: #555;
-  font-family: 'Patrick Hand', cursive;
+  font-family: "Patrick Hand", cursive;
 }
 
 @keyframes popUp {
-  from { transform: scale(0.8); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .hand-drawn-wrapper {
   position: absolute;
-  top: 0; 
+  top: 0;
   left: 0;
-  width: 100%; 
-  height: 100%; 
-  pointer-events: none; /* Let clicks pass through */
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
   z-index: 100;
-  
-  /* HIDE DEFAULT */
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.2s ease-in-out;
 }
 
-/* SHOW ON HOVER */
 .desk-item:hover .hand-drawn-wrapper {
   opacity: 1;
   visibility: visible;
 }
 
 /* --- THE FLOATING ELEMENTS --- */
-.arrow-container, .label-container {
-  position: absolute; 
-  width: max-content; 
+.arrow-container,
+.label-container {
+  position: absolute;
+  width: max-content;
 }
 
 .arrow-img {
-  width: 50px; 
+  width: 50px;
   height: auto;
   opacity: 0.9;
 }
 
 .label-text {
-  font-family: 'Patrick Hand', cursive; 
-  font-size: 1rem; 
+  font-family: "Patrick Hand", cursive;
+  font-size: 1rem;
   color: #000;
-  text-shadow: 1px 1px 0px rgba(255,255,255,0.4);
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.4);
 }
 
 .info-content {
@@ -583,31 +644,30 @@ button.tab.active
 }
 
 .popup-cta-btn {
-  background-color: #333; 
+  background-color: #333;
   color: white;
   border: none;
   padding: 12px 24px;
-  border-radius: 30px; 
+  border-radius: 30px;
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
   display: flex;
   align-items: center;
-  gap: 8px; 
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  gap: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .popup-cta-btn:hover {
   background-color: #000;
-  transform: translateY(-2px); 
-  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
 .popup-cta-btn:active {
   transform: translateY(0);
 }
-
 
 #Corkboard {
   top: 14%;
@@ -627,14 +687,14 @@ button.tab.active
   top: 39.8%;
   left: 37%;
   width: 27%;
-  z-index: 5; 
+  z-index: 5;
 }
 
 #Boba {
   top: 52.4%;
   left: 63%;
   width: 8%;
-  z-index: 6; 
+  z-index: 6;
 }
 
 #BOOKS {
@@ -677,7 +737,7 @@ button.tab.active
 }
 
 .doodle-heading {
-  font-family: 'Patrick Hand', cursive;
+  font-family: "Pangolin", cursive;
   font-size: 1.5rem;
   margin-bottom: 10px;
   color: #333;
@@ -692,19 +752,19 @@ button.tab.active
 .doodle-social-icon {
   color: #333;
   transition: transform 0.2s ease;
-  filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.1)); 
+  filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.1));
 }
 
 .doodle-social-icon:hover {
   color: #000;
-  transform: translateY(-3px) rotate(-5deg); 
+  transform: translateY(-3px) rotate(-5deg);
 }
 
 .doodle-divider {
   border: 0;
   height: 2px;
   background: #333;
-  border-radius: 50%; 
+  border-radius: 50%;
   width: 80%;
   margin: 10px auto 20px auto;
   opacity: 0.2;
@@ -712,30 +772,29 @@ button.tab.active
 
 .form-group {
   margin-bottom: -20px;
-
 }
 
 .doodle-send-btn:hover {
   background: #000;
   transform: translateY(-2px) rotate(1deg);
-  box-shadow: 3px 3px 0px rgba(0,0,0,0.3);
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.3);
 }
 
 .form-group.compact {
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 }
 
 .form-group.compact label {
-  font-size: 0.9rem; 
-  margin-bottom: 20px; 
+  font-size: 0.9rem;
+  margin-bottom: 20px;
   margin-left: 8px;
 }
 
 .doodle-input {
   width: 100%;
-  padding: 6px 10px; 
-  font-family: 'Patrick Hand', cursive;
-  font-size: 0.95rem; 
+  padding: 6px 10px;
+  font-family: "Patrick Hand", cursive;
+  font-size: 0.95rem;
   border: 2px solid #333;
   background: #fffdf0;
   border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
@@ -743,8 +802,8 @@ button.tab.active
 }
 
 .doodle-input.textarea {
-  resize: none; 
-  height: auto; 
+  resize: none;
+  height: auto;
 }
 
 .doodle-send-btn.compact-btn {
@@ -752,7 +811,7 @@ button.tab.active
   width: 30%;
   background: #333;
   color: white;
-  font-family: 'Patrick Hand', cursive;
+  font-family: "Patrick Hand", cursive;
   font-size: 1.3rem;
   border: none;
   border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
@@ -766,5 +825,173 @@ button.tab.active
 }
 
 .doodle-divider {
-  margin: 5px auto 10px auto; 
+  margin: 5px auto 10px auto;
+}
+
+.about-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.two-column-layout {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin: 40px 0;
+  flex-wrap: wrap;
+}
+
+.doodle-title {
+  font-family: "Pangolin", cursive;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.center-text {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto;
+  font-size: 1.5rem;
+  font-family: "Patrick Hand", cursive;
+  line-height: 1.8;
+}
+
+.sticky-note {
+  background: #fff9c4;
+  width: 260px;
+  height: 220px;
+  padding: 25px;
+  box-shadow: 3px 5px 15px rgba(0, 0, 0, 0.15);
+  transform: rotate(-2deg);
+  position: relative;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.sticky-note:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+.sticky-note h4 {
+  font-family: "Pangolin", cursive;
+  font-size: 1.4rem;
+  margin-bottom: 5px;
+  border-bottom: 2px dashed #d7ccc8;
+  padding-bottom: 5px;
+  width: 100%;
+}
+
+.sticky-note .degree {
+  font-family: "Patrick Hand", cursive;
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.sticker-grid {
+  font-family: "Patrick Hand", cursive;
+  gap: 14px;
+}
+
+.grade-stamp {
+  margin-top: 15px;
+  border: 3px solid #ef5350;
+  color: #ef5350;
+  border-radius: 10px;
+  padding: 5px 10px;
+  font-family: "Patrick Hand", cursive;
+  font-weight: bold;
+  font-size: 1.3rem;
+  transform: rotate(-10deg);
+  opacity: 0.8;
+}
+
+.highlight {
+  background: linear-gradient(
+    120deg,
+    rgba(255, 235, 59, 0.6) 0%,
+    rgba(255, 235, 59, 0.2) 100%
+  );
+  border-radius: 4px 10px 4px 15px; /* Messy corners */
+  padding: 2px 6px;
+}
+
+.notebook-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 60px 40px;
+  background-color: #edf9d7;
+  box-shadow:
+    0 1px 4px rgba(0, 0, 0, 0.05),
+    0 10px 30px rgba(0, 0, 0, 0.1);
+  border-left: 12px solid rgba(0, 0, 0, 0.05);
+
+  min-height: 100vh;
+  position: relative;
+}
+
+.handwritten-text {
+  font-family: "Patrick Hand", cursive;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+.about-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.profile-circle-wrapper {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  border-radius: 70%;
+  border: 4px solid #f4e784;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background: white;
+}
+
+.profile-circle-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.nametag-wrapper {
+  background: white;
+  border: 3px solid #333;
+  border-radius: 12px;
+  padding: 12px 30px;
+  text-align: center;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.15);
+  transform: rotate(-3deg);
+  min-width: 180px;
+}
+
+.nametag-name {
+  font-family: "Patrick Hand", cursive;
+  font-size: 3rem;
+  color: #333;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.nametag-header {
+  font-family: "Pangolin", cursive;
+  font-size: 1.2rem;
+  color: #777;
+  margin-top: 5px;
 }
