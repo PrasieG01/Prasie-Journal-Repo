@@ -1,20 +1,18 @@
 import React, { useState, useRef } from "react";
 import { X, Send } from "lucide-react";
 import emailjs from "@emailjs/browser";
+
 /* --- ASSETS --- */
-import deskBg from "../assets/Table.png";
+import deskBg from "../assets/desk-bg.png";
+import prasieImg from "../assets/prasie.png";
 import laptopImg from "../assets/Laptop.png";
-import arrowImg from "../assets/down-arrow.png";
-// import journalImg from '../assets/Journal.png';
-import toteImg from "../assets/Totebag.png";
 import corkImg from "../assets/Corkboard.png";
-// import bobaImg from '../assets/Boba.png';
-// import booksImg from '../assets/BOOKS.png';
+import toteImg from "../assets/Totebag.png";
+import booksImg from "../assets/BOOKS.png";
+import headphonesImg from "../assets/Headphones.png";
+import journalImg from "../assets/Journal.png";
+import matchaImg from "../assets/Matcha.png";
 import phoneImg from "../assets/IPhone.png";
-import githubDoodle from "../assets/github.png";
-import linkedinDoodle from "../assets/linkedin.png";
-import emailDoodle from "../assets/gmail.png";
-// import headphonesImg from '../assets/Headphones.png';
 
 import html_icon from "../assets/html_icon.jpg";
 import java_icon from "../assets/java_icon.jpg";
@@ -26,6 +24,12 @@ import sql_icon from "../assets/sql_icon.jpg";
 import Git_icon from "../assets/Git_icon.jpg";
 import figma_icon from "../assets/figma_icon.jpg";
 import aws_icon from "../assets/aws_icon.jpg";
+
+import githubDoodle from "../assets/github.png";
+import linkedinDoodle from "../assets/linkedin.png";
+import emailDoodle from "../assets/gmail.png";
+
+import arrowImg from "../assets/down-arrow.png";
 
 const InteractiveDesk = ({ onNavigate }) => {
   const formRef = useRef();
@@ -59,12 +63,40 @@ const InteractiveDesk = ({ onNavigate }) => {
   // Base Width: 1434px | Base Height: 800px
   const items = [
     {
+      id: "Corkboard",
+      img: corkImg,
+      handLabel: "My Experiences",
+      title: "Career Journey",
+      type: "info",
+      data: "From my first internship to my current role, view my full resume and timeline.",
+      cta: { text: "View Experiences", link: "/experiences" },
+      style: { left: "11.92%", top: "7.50%", width: "26.29%", zIndex: 1 }
+    },
+    {
+      id: "Totebag",
+      img: toteImg,
+      handLabel: "Hobbies",
+      title: "The Explorer",
+      type: "info",
+      data: "I love traveling, photography, and collecting memories. My totebag holds the tools I use to capture the world.",
+      style: { left: "71.62%", top: "2.75%", width: "15.27%", zIndex: 2 }
+    },
+    {
+      id: "Prasie",
+      img: prasieImg,
+      handLabel: "About Me",
+      title: "Hi, I'm Prasie!",
+      type: "info",
+      data: "Welcome to my digital space. Click below to read more about my journey.",
+      cta: { text: "Visit About Page", link: "/about" },
+      style: { left: "39.12%", top: "5.25%", width: "20.64%", zIndex: 1 }
+    },
+    {
       id: "Laptop",
       img: laptopImg,
       handLabel: "Tools & Languages",
       title: "My Tech Stack",
       type: "icons",
-
       data: [
         { name: "React", icon: react_icon },
         { name: "JavaScript", icon: js_icon },
@@ -77,104 +109,56 @@ const InteractiveDesk = ({ onNavigate }) => {
         { name: "AWS", icon: aws_icon },
         { name: "SQL", icon: sql_icon },
       ],
-      // style: { top: '39.8%', left: '38.9%', width: '29.5%', zIndex: 4 }
-      arrowStyle: {
-        top: "85%",
-        left: "55%",
-        transform: "rotate(98deg)",
-        width: "16%",
-      },
-
-      labelStyle: {
-        top: "100%",
-        left: "65%",
-        transform: "rotate(-20deg)",
-        width: "20%",
-      },
+      style: { left: "43.93%", top: "34.75%", width: "26.78%", zIndex: 4 }
     },
-
-    //   {
-    //     id: 'Totebag',
-    //     img: toteImg,
-    //     label: "About Me",
-    //     title: "The Explorer",
-
-    //     type: "info",
-
-    //     // The Description Text
-    //     data: "I love traveling, photography, and collecting memories. My totebag holds the tools I use to capture the world.",
-
-    //     // The Button Configuration
-    //     cta: {
-    //       text: "Visit About Page",
-    //       link: "/about"
-    //     },
-
-    //     style: { top: '1.9%', left: '71%', width: '13.8%', zIndex: 2 }
-    //   },
-
     {
-      id: "Corkboard",
-      img: corkImg,
-      handLabel: "My Experiences",
-      title: "Career Journey",
+      id: "Books",
+      img: booksImg,
+      handLabel: "Studies",
+      title: "What I'm Learning",
       type: "info",
-      data: "From my first internship to my current role, view my full resume and timeline.",
-      cta: {
-        text: "View Experiences",
-        link: "/experiences",
-      },
-
-      arrowStyle: {
-        top: "95%",
-        left: "50%",
-        width: "8%",
-        transform: "rotate(120deg)",
-      },
-
-      labelStyle: {
-        top: "110%",
-        left: "50%",
-        width: "10%",
-        transform: "rotate(-36deg)",
-      },
-
-      style: { top: "0%", left: "0%", width: "60%", zIndex: 1 },
+      data: "A peek into the books, courses, and algorithms keeping me busy lately.",
+      style: { left: "20.15%", top: "46.63%", width: "12.90%", zIndex: 5 }
     },
     {
-      id: "IPhone",
+      id: "Headphones",
+      img: headphonesImg,
+      handLabel: "Vibes",
+      title: "Current Playlist",
+      type: "info",
+      data: "Nothing gets me into the coding zone quite like a good playlist.",
+      style: { left: "32.29%", top: "50.00%", width: "8.79%", zIndex: 6 }
+    },
+    {
+      id: "Journal",
+      img: journalImg,
+      handLabel: "Ideas",
+      title: "My Notebook",
+      type: "info",
+      data: "Where all the messy wireframes and midnight ideas live.",
+      style: { left: "68.55%", top: "56.88%", width: "7.46%", zIndex: 7 }
+    },
+    {
+      id: "Matcha",
+      img: matchaImg,
+      handLabel: "Fuel",
+      title: "Matcha Time",
+      type: "info",
+      data: "Turning caffeine into code, one sip at a time.",
+      style: { left: "74.82%", top: "52.13%", width: "9.5%", zIndex: 8 }
+    },
+    {
+      id: "Phone",
       img: phoneImg,
       handLabel: "Say hi!",
       type: "contact",
-
       socials: [
-        {
-          name: "LinkedIn",
-          link: "https://www.linkedin.com/in/prasamsha-gyenwali/",
-        },
+        { name: "LinkedIn", link: "https://www.linkedin.com/in/prasamsha-gyenwali/" },
         { name: "GitHub", link: "https://github.com/PrasieG01" },
         { name: "Email", link: "mailto:gyenwaliprasamsha@gmail.com" },
-        {
-          name: "Website",
-          link: "https://www.linkedin.com/in/prasamsha-gyenwali/",
-        },
       ],
-
-      arrowStyle: {
-        top: "95%",
-        left: "50%",
-        width: "8%",
-        transform: "rotate(120deg)",
-      },
-
-      labelStyle: {
-        top: "110%",
-        left: "50%",
-        width: "10%",
-        transform: "rotate(-36deg)",
-      },
-      style: { top: "60%", left: "75%", width: "12%", zIndex: 5 },
-    },
+      style: { left: "76.36%", top: "64.50%", width: "7.18%", zIndex: 9 }
+    }
   ];
 
   return (
