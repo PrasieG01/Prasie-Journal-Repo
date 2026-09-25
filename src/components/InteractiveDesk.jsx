@@ -41,6 +41,7 @@ import vinylGif from '../assets/vinyl.gif';
 const InteractiveDesk = ({ onNavigate }) => {
   const formRef = useRef();
   const [selectedItem, setSelectedItem] = useState(null);
+  const [hoveredItem, setHoveredItem] = useState(null);
   const [status, setStatus] = useState("idle"); // 'idle' | 'sending' | 'success' | 'error'
   const sendEmail = (e) => {
     e.preventDefault();
@@ -75,19 +76,6 @@ const InteractiveDesk = ({ onNavigate }) => {
       handLabel: "My Experiences",
       path: "experiences",
       style: { left: "11.92%", top: "7.50%", width: "26.29%", zIndex: 1 },
-
-      arrowStyle: {
-        top: "105%", 
-        left: "10%", 
-        transform: "rotate(310deg)", 
-        width: "40%" 
-      },
-      labelStyle: {
-        top: "100%", 
-        left: "20%",
-        transform: "rotate(-30deg)", 
-        width: "10%"
-      }
     },
     {
       id: "Totebag",
@@ -98,18 +86,6 @@ const InteractiveDesk = ({ onNavigate }) => {
       data: "I love traveling, photography, and collecting memories. My totebag holds the tools I use to capture the world.",
       style: { left: "71.62%", top: "2.75%", width: "15.27%", zIndex: 2 },
 
-      arrowStyle: {
-        top: "95%", 
-        left: "85%", 
-        transform: "rotate(-160deg)", 
-        width: "60%"
-      },
-      labelStyle: {
-        top: "105%", 
-        left: "95%",
-        transform: "rotate(-5deg)", 
-        width: "20%"
-      }
     },
     {
       id: "Prasie",
@@ -124,19 +100,6 @@ const InteractiveDesk = ({ onNavigate }) => {
         width: "80%", 
         height: "95%" 
       },
-
-      arrowStyle: {
-        top: "2%", 
-        left: "80%", 
-        transform: "rotate(140deg)", 
-        width: "50%" 
-      },
-      labelStyle: {
-        top: "100%", 
-        left: "65%",
-        transform: "rotate(-20deg)", 
-        width: "20%"
-      }
     },
     {
       id: "Laptop",
@@ -159,27 +122,13 @@ const InteractiveDesk = ({ onNavigate }) => {
       ],
       style: { left: "43.93%", top: "34.75%", width: "26.78%", zIndex: 5 },
 
-      arrowStyle: {
-        top: "105%", 
-        left: "45%",
-        transform: "rotate(-150deg)", 
-        width: "35%" 
-      },
-
       hitboxStyle: {
         top: "10%",    
         left: "5%",   
         width: "100%",  
         height: "90%",  
         clipPath: "polygon(40% 0%, 100% 0%, 80% 100%, -8% 90%)"      
-       },
-      
-      labelStyle: {
-        top: "100%", 
-        left: "45%",
-        transform: "rotate(-20deg)", 
-        width: "20%"
-      }
+       }
     },
     {
       id: "Books",
@@ -188,20 +137,7 @@ const InteractiveDesk = ({ onNavigate }) => {
       title: "What I'm Learning",
       type: "info",
       data: "A peek into the books, courses, and algorithms keeping me busy lately.",
-      style: { left: "20.15%", top: "46.63%", width: "12.90%", zIndex: 5 },
-
-      arrowStyle: {
-        top: "105%", 
-        left: "35%", 
-        transform: "rotate(-140deg)", 
-        width: "70%" 
-      },
-      labelStyle: {
-        top: "100%", 
-        left: "45%",
-        transform: "rotate(-120deg)", 
-        width: "120%"
-      }
+      style: { left: "20.15%", top: "46.63%", width: "12.90%", zIndex: 5 }
     },
 
     {
@@ -248,15 +184,15 @@ const InteractiveDesk = ({ onNavigate }) => {
       style: { left: "32.29%", top: "50.00%", width: "8.79%" },
 
       arrowStyle: {
-        top: "95%", /* 85% down from the top of the laptop */
-        left: "55%", /* Slightly right of center */
-        transform: "rotate(-150deg)", /* Points it at the laptop */
-        width: "110%" /* Size of the arrow */
+        top: "95%", 
+        left: "55%", 
+        transform: "rotate(-150deg)", 
+        width: "110%" 
       },
       labelStyle: {
-        top: "100%", /* Sits right under the laptop */
+        top: "100%", 
         left: "65%",
-        transform: "rotate(-20deg)", /* Cute tilted text */
+        transform: "rotate(-20deg)", 
         width: "20%"
       }
     },
@@ -355,6 +291,8 @@ const InteractiveDesk = ({ onNavigate }) => {
 
           <div 
             className="hitbox"
+            onMouseEnter={() => setHoveredItem(item.id)}
+            onMouseLeave={() => setHoveredItem(null)}
             onClick={() => {
               if (item.path) {
                 onNavigate(item.path); 
@@ -374,12 +312,12 @@ const InteractiveDesk = ({ onNavigate }) => {
           ></div>
 
           {item.handLabel && (
-            <div className="hand-drawn-wrapper">
-              <div className="arrow-container" style={item.arrowStyle || {}}>
+            <div className={`hand-drawn-wrapper ${hoveredItem === item.id ? "visible" : ""}`}>
+              <div className="arrow-container">
                 <img src={arrowImg} alt="arrow" className="arrow-img" />
               </div>
 
-              <div className="label-container" style={item.labelStyle || {}}>
+              <div className="label-container">
                 <span className="label-text">{item.handLabel}</span>
               </div>
             </div>

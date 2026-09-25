@@ -2,6 +2,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Indie+Flower&family=Pangolin&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Indie+Flower&family=Pangolin&family=Press+Start+2P&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Indie+Flower&family=Pangolin&family=Press+Start+2P&family=Quicksand:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Indie+Flower&family=Pangolin&family=Press+Start+2P&family=Quicksand:wght@300..700&family=Twinkle+Star&display=swap');
+
 
 
 .head-title {
@@ -337,12 +339,33 @@ button.tab.active {
   pointer-events: none !important;
 }
 
+.desk-item:hover .hand-drawn-wrapper {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0px);
+}
+
+.label-container {
+  position: relative;
+  width: max-content;
+  margin-bottom: -5px; 
+  transform: rotate(-3deg); 
+  z-index: 2;
+}
+
+.arrow-container {
+  position: relative;
+  width: 35px; 
+  transform: rotate(-90deg);
+  z-index: 1;
+}
+
 /* The Hover Effect (Subtle Pop) */
 .desk-item:hover {
   transform: translateY(-4px) scale(1.02);
   filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.8))
-    drop-shadow(0 8px 15px rgba(0, 0, 0, 0.2));
-  z-index: 20;
+  drop-shadow(0 8px 15px rgba(0, 0, 0, 0.2));
+  z-index: 999 !important;
 }
 
 /* Turn clicks back ON only for the actual hitbox */
@@ -433,43 +456,53 @@ button.tab.active {
 
 .hand-drawn-wrapper {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 100%;
+  left: 50%;
+  width: max-content;
+
   pointer-events: none;
   z-index: 100;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+  transform: translateX(-50%) translateY(10px);
 }
 
-.desk-item:hover .hand-drawn-wrapper {
+ .hand-drawn-wrapper.visible {
   opacity: 1;
   visibility: visible;
+  transform: translateY(0px); 
 }
 
-/* --- THE FLOATING ELEMENTS --- */
-.arrow-container,
-.label-container {
-  position: absolute;
-  width: max-content;
+.label-text {
+  font-family: "Twinkle Star", cursive;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #222;
+  white-space: nowrap; 
+  text-shadow: 
+    2px 2px 0 #fff, 
+    -2px -2px 0 #fff, 
+    2px -2px 0 #fff, 
+    -2px 2px 0 #fff, 
+    0px 2px 0 #fff, 
+    0px -2px 0 #fff;
 }
+
 
 .arrow-img {
   width: 100%;
   height: auto;
   opacity: 0.9;
-  /* border: 2px solid red;
-  background-color: rgba(255, 0, 0, 0.3); */
 }
 
-.label-text {
-  font-family: "Patrick Hand", cursive;
-  font-size: 1rem;
-  color: #000;
-  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.4);
-}
 
 .info-content {
   display: flex;
