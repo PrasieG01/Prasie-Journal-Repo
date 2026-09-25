@@ -9,42 +9,62 @@ import Contact from "./components/Contact";
 function App() {
   const [activePage, setActivePage] = useState("home");
 
+  // The Magic Scroll Function
+  const scrollToSection = (sectionId) => {
+    setActivePage(sectionId); 
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
-    <div
-      className={`journal-container ${activePage === "home" ? "bg-yellow" : "bg-dotted"}`}
-    >
+    <div className="journal-container bg-dotted">
+      
       <main className="paper-background">
-        {activePage === "home" && <Home onNavigate={setActivePage} />}
-        {activePage === "about" && <AboutMe />}
-        {activePage === "experiences" && <Experiences />}
-        {activePage === "contact" && <Contact />}
+        
+        <div id="home" className="section-wrapper">
+          <Home onNavigate={scrollToSection} />
+        </div>
+
+        <div id="about" className="section-wrapper">
+          <AboutMe />
+        </div>
+
+        <div id="experiences" className="section-wrapper">
+          <Experiences />
+        </div>
+
+        <div id="contact" className="section-wrapper">
+          <Contact />
+        </div>
       </main>
 
       <nav className="sidebar">
         <button
           className={`tab home ${activePage === "home" ? "active" : ""}`}
-          onClick={() => setActivePage("home")}
+          onClick={() => scrollToSection("home")}
         >
           Home
         </button>
 
         <button
           className={`tab about ${activePage === "about" ? "active" : ""}`}
-          onClick={() => setActivePage("about")}
+          onClick={() => scrollToSection("about")}
         >
           About Me
         </button>
 
         <button
           className={`tab experiences ${activePage === "experiences" ? "active" : ""}`}
-          onClick={() => setActivePage("experiences")}
+          onClick={() => scrollToSection("experiences")}
         >
           Experiences
         </button>
 
         <button
           className={`tab contact ${activePage === "contact" ? "active" : ""}`}
-          onClick={() => setActivePage("contact")}
+          onClick={() => scrollToSection("contact")}
         >
           Contact Me
         </button>

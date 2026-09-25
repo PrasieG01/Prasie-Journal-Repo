@@ -76,6 +76,7 @@ const InteractiveDesk = ({ onNavigate }) => {
       handLabel: "My Experiences",
       path: "experiences",
       style: { left: "11.92%", top: "7.50%", width: "26.29%", zIndex: 1 },
+      path: "experiences",
     },
     {
       id: "Totebag",
@@ -85,6 +86,7 @@ const InteractiveDesk = ({ onNavigate }) => {
       type: "info",
       data: "I love traveling, photography, and collecting memories. My totebag holds the tools I use to capture the world.",
       style: { left: "71.62%", top: "2.75%", width: "15.27%", zIndex: 2 },
+      path: "hobbies",
 
     },
     {
@@ -93,6 +95,7 @@ const InteractiveDesk = ({ onNavigate }) => {
       handLabel: "About Me",
       path: "about",
       style: { left: "39.12%", top: "5.25%", width: "20.64%", zIndex: 2 },
+      path: "about",
 
       hitboxStyle: {
         top: "0%", 
@@ -121,6 +124,7 @@ const InteractiveDesk = ({ onNavigate }) => {
         { name: "C", icon: c_icon },
       ],
       style: { left: "43.93%", top: "34.75%", width: "26.78%", zIndex: 5 },
+      path: "tools",
 
       hitboxStyle: {
         top: "10%",    
@@ -137,7 +141,8 @@ const InteractiveDesk = ({ onNavigate }) => {
       title: "What I'm Learning",
       type: "info",
       data: "A peek into the books, courses, and algorithms keeping me busy lately.",
-      style: { left: "20.15%", top: "46.63%", width: "12.90%", zIndex: 5 }
+      style: { left: "20.15%", top: "46.63%", width: "12.90%", zIndex: 5 },
+      path: "books",
     },
 
     {
@@ -182,6 +187,7 @@ const InteractiveDesk = ({ onNavigate }) => {
         }
       ],
       style: { left: "32.29%", top: "50.00%", width: "8.79%" },
+      path: "music",
 
       arrowStyle: {
         top: "95%", 
@@ -205,6 +211,7 @@ const InteractiveDesk = ({ onNavigate }) => {
       type: "info",
       data: "Where all the messy wireframes and midnight ideas live.",
       style: { left: "68.55%", top: "56.88%", width: "7.46%", zIndex: 7 },
+      path: "journal",
 
       arrowStyle: {
         top: "125%", 
@@ -233,6 +240,7 @@ const InteractiveDesk = ({ onNavigate }) => {
         { name: "📍Hey Tea, NY", img: heyteaImg }
       ],
       style: { left: "74.82%", top: "54.13%", width: "8.5%" },
+      path: "matcha",
 
       arrowStyle: {
         top: "125%", 
@@ -258,6 +266,7 @@ const InteractiveDesk = ({ onNavigate }) => {
         { name: "Email", link: "mailto:gyenwaliprasamsha@gmail.com" },
       ],
       style: { left: "76.36%", top: "64.50%", width: "7.18%", zIndex: 9 },
+      path: "contact",
 
       arrowStyle: {
         top: "100%",
