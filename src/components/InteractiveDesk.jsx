@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { createPortal } from "react-dom";
 import { X, Send } from "lucide-react";
 import emailjs from "@emailjs/browser";
 
@@ -86,7 +87,6 @@ const InteractiveDesk = ({ onNavigate }) => {
       type: "info",
       data: "I love traveling, photography, and collecting memories. My totebag holds the tools I use to capture the world.",
       style: { left: "71.62%", top: "2.75%", width: "15.27%", zIndex: 2 },
-      path: "hobbies",
 
     },
     {
@@ -124,7 +124,6 @@ const InteractiveDesk = ({ onNavigate }) => {
         { name: "C", icon: c_icon },
       ],
       style: { left: "43.93%", top: "34.75%", width: "26.78%", zIndex: 5 },
-      path: "tools",
 
       hitboxStyle: {
         top: "10%",    
@@ -142,7 +141,6 @@ const InteractiveDesk = ({ onNavigate }) => {
       type: "info",
       data: "A peek into the books, courses, and algorithms keeping me busy lately.",
       style: { left: "20.15%", top: "46.63%", width: "12.90%", zIndex: 5 },
-      path: "books",
     },
 
     {
@@ -187,7 +185,6 @@ const InteractiveDesk = ({ onNavigate }) => {
         }
       ],
       style: { left: "32.29%", top: "50.00%", width: "8.79%" },
-      path: "music",
 
       arrowStyle: {
         top: "95%", 
@@ -240,7 +237,6 @@ const InteractiveDesk = ({ onNavigate }) => {
         { name: "📍Hey Tea, NY", img: heyteaImg }
       ],
       style: { left: "74.82%", top: "54.13%", width: "8.5%" },
-      path: "matcha",
 
       arrowStyle: {
         top: "125%", 
@@ -266,7 +262,6 @@ const InteractiveDesk = ({ onNavigate }) => {
         { name: "Email", link: "mailto:gyenwaliprasamsha@gmail.com" },
       ],
       style: { left: "76.36%", top: "64.50%", width: "7.18%", zIndex: 9 },
-      path: "contact",
 
       arrowStyle: {
         top: "100%",
@@ -302,7 +297,10 @@ const InteractiveDesk = ({ onNavigate }) => {
             className="hitbox"
             onMouseEnter={() => setHoveredItem(item.id)}
             onMouseLeave={() => setHoveredItem(null)}
-            onClick={() => {
+            onClick={(e) => {
+            e.stopPropagation();
+              console.log("Clicked item:", item.id); //for debugging
+
               if (item.path) {
                 onNavigate(item.path); 
               } else {
@@ -335,7 +333,7 @@ const InteractiveDesk = ({ onNavigate }) => {
       ))})
       </div>
 
-      {selectedItem && (
+      {selectedItem && createPortal(
         <div className="popup-overlay" onClick={() => setSelectedItem(null)}>
           <div className="popup-card" onClick={(e) => e.stopPropagation()}>
             <button className="close-btn" onClick={() => setSelectedItem(null)}>
@@ -513,7 +511,8 @@ const InteractiveDesk = ({ onNavigate }) => {
               )}
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );
