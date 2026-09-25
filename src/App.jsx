@@ -46,7 +46,7 @@ function App() {
           className={`tab contact ${activePage === "contact" ? "active" : ""}`}
           onClick={() => setActivePage("contact")}
         >
-          Contact Us
+          Contact Me
         </button>
       </nav>
     </div>

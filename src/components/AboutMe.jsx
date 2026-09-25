@@ -1,20 +1,13 @@
 import React from "react";
-import {
-  Coffee,
-  Music,
-  BookOpen,
-  PenTool,
-  Github,
-  Heart,
-  Sparkles,
-  Monitor,
-} from "lucide-react";
-import profilePic from "../assets/my_photo.jpg";
+import profilePic from "../assets/prasienew.png";
+import gradCapImg from '../assets/grad-cap.png';
+import doodleIcon from '../assets/grad-cap.png';
+import { Github } from "lucide-react";
 
 const AboutMe = () => {
   return (
     <div className="notebook-container">
-      {/* --- TOP ROW: FACE + HELLO --- */}
+      {/* --- MAIN HELLO --- */}
       <div className="about-header-row">
         <div className="profile-circle-wrapper">
           <img src={profilePic} alt="Prasie" className="profile-circle-img" />
@@ -47,38 +40,46 @@ const AboutMe = () => {
       <div className="two-column-layout">
         {/* LEFT: School (Sticky Note) */}
         <div className="notebook-col">
-          <h3 className="doodle-heading">🎓 The Stats</h3>
+          <h3 className="doodle-heading">
+  <img src={gradCapImg} alt="Grad Cap" className="inline-doodle-icon" /> 
+  The Stats
+</h3>
           <div className="sticky-note">
             <div className="pin"></div>
             <div className="note-content">
               <h4>Barnard College of Columbia University</h4>
-              <p className="degree">B.S. Computer Science</p>
+              <p className="degree">Major: B.S. Computer Science</p>
+              <p className="degree">Minor: Statistics + Psychology</p>
+
               <div className="grade-stamp">Class of 2028</div>
             </div>
           </div>
         </div>
-
         {/* RIGHT: Hobbies (Stickers) */}
         <div className="notebook-col">
-          <h3 className="doodle-heading">Things I Love</h3>
-          <div className="sticker-grid">
-            <div className="sticker pink">
-              <Heart size={18} /> Dancing
-            </div>
-            <div className="sticker blue">
-              <Coffee size={18} /> Matcha Lattes
-            </div>
-            <div className="sticker green">
-              <BookOpen size={18} /> Cooking + Trying new food
-            </div>
-            <div className="sticker yellow">
-              <Sparkles size={18} /> UI Design
-            </div>
-            <div className="sticker purple">
-              <Monitor size={18} /> The Cozy Web
+            <div className="activities-list">
+              <h3 className="doodle-heading">
+                Campus Involvement
+              </h3>
+              <ul className="doodle-list">
+                <li>
+                  <span className="emoji-bullet">📢</span> 
+                  <strong>Leadership:</strong> 
+                  <span className="activity-desc">Girls Who Code (External Engagement Chair), WiCS (Publicity Chair), ADI Community Pillar</span>
+                </li>
+                <li>
+                  <span className="emoji-bullet">🤝</span> 
+                  <strong>Mentorship:</strong> 
+                  <span className="activity-desc">SWE CS Mentor, GWC CS Mentor, AFE Scholar Ambassador</span>
+                </li>
+                <li>
+                  <span className="emoji-bullet">🌱</span> 
+                  <strong>Community:</strong> 
+                  <span className="activity-desc">CSTEP Scholar, QuestBridge Chapter @Barnard, Dell Scholar'24, AFE Scholar'24</span>
+                </li>
+              </ul>
             </div>
           </div>
-        </div>
       </div>
 
       <hr className="doodle-divider-line" />

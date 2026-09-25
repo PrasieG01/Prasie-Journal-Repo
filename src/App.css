@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Indie+Flower&family=Pangolin&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Indie+Flower&family=Pangolin&family=Press+Start+2P&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Indie+Flower&family=Pangolin&family=Press+Start+2P&family=Quicksand:wght@300..700&display=swap');
+
 
 .head-title {
   text-align: center;
@@ -68,8 +70,8 @@ button.tab {
   color: #ffffff;
   box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.2);
   transition:
-    transform 0.3s ease,
-    width 0.3s ease;
+  transform 0.3s ease,
+  width 0.3s ease;
   border: none;
   cursor: pointer;
 }
@@ -146,47 +148,6 @@ button.tab.active {
   filter: grayscale(0%) contrast(100%);
 }
 
-.washi-tape {
-  position: absolute;
-  top: -15px;
-  left: 35%;
-  width: 90px;
-  height: 30px;
-  background-color: var(--tape);
-  border-left: 1px dashed rgba(0, 0, 0, 0.1);
-  border-right: 1px dashed rgba(0, 0, 0, 0.1);
-
-  clip-path: polygon(
-    0% 5%,
-    5% 0%,
-    15% 5%,
-    25% 0%,
-    35% 5%,
-    45% 0%,
-    55% 5%,
-    65% 0%,
-    75% 5%,
-    85% 0%,
-    95% 5%,
-    100% 0%,
-    100% 95%,
-    95% 100%,
-    85% 95%,
-    75% 100%,
-    65% 95%,
-    55% 100%,
-    45% 95%,
-    35% 100%,
-    25% 95%,
-    15% 100%,
-    5% 95%,
-    0% 100%
-  );
-
-  opacity: 0.8;
-  z-index: 10;
-  transform: rotate(-2deg);
-}
 
 .marker-caption {
   font-family: "Patrick Hand", cursive;
@@ -195,17 +156,6 @@ button.tab.active {
   text-align: center;
   margin-top: 15px;
   transform: rotate(-1deg);
-}
-
-.polaroid-back-doodle {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  text-align: center;
-  font-family: "Patrick Hand", cursive;
-  padding: 10px;
 }
 
 .doodle-github-link {
@@ -265,19 +215,6 @@ button.tab.active {
   animation: popIn 0.3s forwards;
 }
 
-.doodle-modal h2 {
-  font-family: "Patrick Hand", cursive;
-  font-size: 2.5rem;
-  margin-top: 0;
-  margin-bottom: 5px;
-  color: var(--ink);
-  background: linear-gradient(
-    to top,
-    rgba(255, 235, 59, 0.5) 40%,
-    transparent 40%
-  );
-  display: inline-block;
-}
 
 .doodle-modal h3 {
   font-family: "Patrick Hand", cursive;
@@ -305,23 +242,6 @@ button.tab.active {
   color: var(--ink);
 }
 
-.close-scribble {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  font-family: "Patrick Hand", cursive;
-  font-size: 2rem;
-  cursor: pointer;
-  background: none;
-  border: none;
-  color: var(--ink);
-  transition: transform 0.2s;
-}
-
-.close-scribble:hover {
-  transform: scale(1.2) rotate(90deg);
-  color: #f06a6a;
-}
 
 /* 5. Button on the Polaroid Back */
 .read-more-btn {
@@ -378,93 +298,6 @@ button.tab.active {
   }
 }
 
-/* --- HIKING TRAIL LAYOUT --- */
-.trail-container {
-  position: relative;
-  width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 40px 0;
-  display: flex;
-  flex-direction: column;
-}
-
-.trail-line {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 4px;
-  transform: translateX(-50%);
-  background-image: linear-gradient(to bottom, var(--ink) 50%, transparent 50%);
-  background-size: 4px 20px;
-  background-repeat: repeat-y;
-  opacity: 0.3;
-  z-index: 0;
-}
-
-.trail-stop {
-  position: relative;
-  width: 50%;
-  display: flex;
-  box-sizing: border-box;
-  z-index: 1;
-  margin-bottom: -40px;
-}
-
-.trail-stop .polaroid-doodle {
-  flex-shrink: 0;
-}
-
-.trail-stop.left {
-  left: 0;
-  justify-content: flex-end;
-  padding-right: 60px;
-}
-
-.trail-stop.right {
-  left: 50%;
-  justify-content: flex-start;
-  padding-left: 60px;
-}
-
-.trail-connector {
-  position: absolute;
-  top: 100px;
-  height: 2px;
-  width: 60px;
-  background: none;
-  border-top: 3px dashed var(--ink);
-  opacity: 0.6;
-}
-
-.trail-stop.left .trail-connector {
-  right: 0;
-  transform: rotate(10deg);
-}
-
-.trail-stop.right .trail-connector {
-  left: 0;
-  transform: rotate(-10deg);
-}
-
-.trail-marker {
-  position: absolute;
-  top: 90px;
-  width: 16px;
-  height: 16px;
-  background: white;
-  border: 3px solid var(--ink);
-  border-radius: 50%;
-  z-index: 2;
-}
-
-.trail-stop.left .trail-marker {
-  right: -10px;
-}
-.trail-stop.right .trail-marker {
-  left: -10px;
-}
 
 /* --- DESK CONTAINER --- */
 .desk-container {
@@ -617,9 +450,11 @@ button.tab.active {
 }
 
 .arrow-img {
-  width: 50px;
+  width: 100%;
   height: auto;
   opacity: 0.9;
+  /* border: 2px solid red;
+  background-color: rgba(255, 0, 0, 0.3); */
 }
 
 .label-text {
@@ -860,6 +695,15 @@ button.tab.active {
   line-height: 1.8;
 }
 
+/* grad-cap icon */
+.inline-doodle-icon {
+  width: 1.7rem; 
+  height: auto;
+  vertical-align: middle; 
+  margin-right: 8px; 
+  transform: rotate(-5deg); 
+}
+
 .sticky-note {
   background: #fff9c4;
   width: 260px;
@@ -909,7 +753,7 @@ button.tab.active {
   font-family: "Patrick Hand", cursive;
   font-weight: bold;
   font-size: 1.3rem;
-  transform: rotate(-10deg);
+  transform: rotate(-5deg);
   opacity: 0.8;
 }
 
@@ -919,7 +763,6 @@ button.tab.active {
     rgba(255, 235, 59, 0.6) 0%,
     rgba(255, 235, 59, 0.2) 100%
   );
-  border-radius: 4px 10px 4px 15px; /* Messy corners */
   padding: 2px 6px;
 }
 
@@ -932,7 +775,6 @@ button.tab.active {
     0 1px 4px rgba(0, 0, 0, 0.05),
     0 10px 30px rgba(0, 0, 0, 0.1);
   border-left: 12px solid rgba(0, 0, 0, 0.05);
-
   min-height: 100vh;
   position: relative;
 }
@@ -957,11 +799,7 @@ button.tab.active {
   position: relative;
   width: 260px;
   height: 260px;
-  border-radius: 70%;
-  border: 4px solid #f4e784;
-  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  background: white;
 }
 
 .profile-circle-img {
@@ -976,6 +814,7 @@ button.tab.active {
   border-radius: 12px;
   padding: 12px 30px;
   text-align: center;
+  margin-left: 10px;
   box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.15);
   transform: rotate(-3deg);
   min-width: 180px;
@@ -994,4 +833,369 @@ button.tab.active {
   font-size: 1.2rem;
   color: #777;
   margin-top: 5px;
+}
+
+
+/*Drink
+/* --- POLAROID CAROUSEL --- */
+.polaroid-carousel-container {
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.polaroid-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 20px 10px;
+  scroll-behavior: smooth;
+  scrollbar-width: none; 
+  -ms-overflow-style: none;
+}
+
+.polaroid-track::-webkit-scrollbar {
+  display: none; 
+}
+
+/* The Polaroid Itself */
+.polaroid-card {
+  flex: 0 0 auto; 
+  width: 200px;
+  background: white;
+  padding: 12px 12px 30px 12px; 
+  border-radius: 4px;
+  box-shadow: 2px 5px 15px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.polaroid-card:nth-child(odd) {
+  transform: rotate(-3deg);
+}
+
+.polaroid-card:nth-child(even) {
+  transform: rotate(4deg);
+}
+
+.polaroid-card:hover {
+  transform: scale(1.05) rotate(0deg);
+  transition: transform 0.2s ease-in-out;
+  z-index: 10;
+}
+
+.polaroid-photo {
+  width: 100%;
+  height: 200px;
+  background-color: #eee;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.polaroid-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.polaroid-caption {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.2rem;
+  color: #333;
+  margin-top: 15px;
+}
+
+.swipe-hint {
+  font-family: 'Patrick Hand', cursive;
+  color: #888;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+/* --- MUSIC LINKS --- */
+.music-link {
+  /* display: block; Makes the whole row clickable, not just the text */
+  text-decoration: none; /* Removes the ugly default blue underline */
+  padding: 6px 10px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  margin-left: -10px; /* Offsets the padding so the text stays aligned */
+}
+
+.music-link:hover {
+  /* background-color: #f0f4ff; /* A super soft blue highlight */
+  transform: translateX(2px); /* Nudges the whole song to the right! */
+}
+
+/* Keeps the title blue even inside the link */
+.music-link .track-title {
+  color: #6384d8; 
+  transition: color 0.2s ease;
+}
+
+.music-link:hover .track-title {
+  color: #4a6ddc; /* Slightly darker blue on hover */
+  text-decoration: underline; 
+}
+
+/* --- THE MUSIC CONTAINER --- */
+.music-popup-container {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* --- 2. THE CLEAN TRACKLIST --- */
+.music-list {
+  width: 100%;
+  list-style-type: none !important;
+  padding: 0 !important;
+  margin: 0;
+  text-align: left;
+}
+
+.music-item {
+  margin-bottom: 10px;
+}
+
+.music-link {
+  display: block;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  font-family: "Pangolin", cursive;
+}
+
+.music-link:hover {
+  background-color: rgba(99, 132, 216, 0.1);
+  transform: translateX(5px);
+}
+
+.track-title {
+  color: #4a6ddc;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.track-artist {
+  color: #636e72;
+  font-size: 0.95rem;
+  margin-left: 5px;
+}
+
+/*TAG*/
+.track-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  background-color: #dfe6e9;
+  color: #636e72;
+  padding: 2px 6px;
+  border-radius: 12px;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+/* ---VINYL GIF --- */
+.vinyl-gif-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0 20px 0;
+  margin-top: -10px;
+}
+
+.vinyl-gif {
+  width: 140px;
+  height: auto;
+  filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.2)); 
+}
+
+/* --- WIREFRAME EXPERIENCES PAGE --- */
+.wireframe-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  background-color: transparent; 
+  font-family: "Pangolin", cursive;
+  color: #000;
+}
+
+/* HEADER */
+.wireframe-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.wireframe-header h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
+}
+
+.wireframe-header p {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+.wireframe-divider {
+  width: 400px;
+  border: 0;
+  border-top: 2px solid #000;
+  margin: 40px auto;
+}
+
+/* GRID */
+.wireframe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 30px;
+}
+
+/* OUTER CARD */
+.wireframe-card {
+  border: 2px solid #000; /* Sharp black border */
+  background-color: #fff; /* Pure white inside */
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* INNER IMAGE BOX */
+.wireframe-image-box {
+  width: 100%;
+  height: 200px;
+  border: 2px solid #000; /* Sharp black border matching your sketch */
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.wireframe-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.empty-box {
+  width: 100%;
+  height: 100%;
+  background-color: #f9f9f9;
+}
+
+/* TITLE & ROLE */
+.wireframe-title-section {
+  margin-bottom: 15px;
+}
+
+.wireframe-title-section h2 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: 0 0 5px 0;
+}
+
+.wireframe-role {
+  font-size: 0.95rem;
+  color: #555;
+  font-style: italic;
+}
+
+/* BULLET POINTS */
+.wireframe-bullets {
+  padding-left: 25px;
+  margin: 0 0 25px 0;
+  flex-grow: 1; /* Pushes tags to the bottom */
+}
+
+.wireframe-bullets li {
+  margin-bottom: 8px;
+  line-height: 1.3;
+  font-size: 0.8rem;
+  font-family: "Quicksand", sans-serif;
+  color: #000;
+  list-style-type: disc; /* Standard black circle bullets */
+}
+
+/* TECH TAGS */
+.wireframe-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.wire-tag {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border: 1px solid #000; /* Minimalist outline */
+  background-color: #fff;
+  color: #000;
+  font-weight: 500;
+}
+
+/* --- TITLE & STICKER ALIGNMENT --- */
+.wireframe-title-section {
+  margin-bottom: 15px;
+}
+
+.company-header-row {
+  display: flex;
+  align-items: center; /* Vertically centers the text and the sticker */
+  margin-bottom: 5px;
+}
+
+.company-header-row h2 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: 0; 
+  font-family: "Pangolin", cursive;
+}
+
+/* --- THE STICKER --- */
+.sticker-link {
+  display: inline-flex; /* Keeps the link tight around the image */
+  align-items: center;
+  padding-left: 80px;
+}
+
+.clickable-sticker {
+  width: auto;
+  transform: rotate(-6deg); /* Gives it that casual "slapped on" look */
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+/* The Hover Animation! */
+.sticker-link:hover .clickable-sticker {
+  transform: rotate(4deg) scale(1.15); /* Wiggles and grows when you mouse over */
+  cursor: pointer;
+}
+
+.wireframe-role {
+  font-size: 0.95rem;
+  color: #555;
+  font-style: italic;
+  display: block; /* Ensures it drops to the next line under the title */
+}
+
+.notebook-col {
+  flex: 1; 
+  min-width: 0; 
+}
+
+.activity-desc {
+  color: #0b0b0b;
+  margin-left: 4px;
+  line-height: 1.4;
+  overflow-wrap: break-word; 
+  word-wrap: break-word;
+  font-family: "Patrick Hand", cursive;
+  font-size: 1.1rem;
 }

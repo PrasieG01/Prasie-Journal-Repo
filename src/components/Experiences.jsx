@@ -1,124 +1,84 @@
 import React, { useState } from "react";
 import { experiences } from "../data/experiences";
+import { ExternalLink } from "lucide-react";
 
-function DoodlePolaroid({ exp, index, onExpand }) {
-  const [isFlipped, setIsFlipped] = useState(false);
-  const rotation = index % 2 === 0 ? "-2deg" : "3deg";
-
+const Experiences = () => {
   return (
-    <div
-      className="polaroid-doodle"
-      style={{ transform: `rotate(${rotation})` }}
-      onClick={() => setIsFlipped(!isFlipped)}
-    >
-      <div className="washi-tape"></div>
+    <div className="wireframe-page">
+      
+      {/* HEADER SECTION */}
+      <div className="wireframe-header">
+        <h1>My Journey So Far</h1>
+        <p>
+          A brief look at my work experiences, the tools I've used, 
+          and the projects I've contributed to along the way.
+        </p>
+        <hr className="wireframe-divider" />
+      </div>
 
-      <div className="polaroid-content">
-        {!isFlipped ? (
-          /* FRONT SIDE */
-          <>
-            <div className="photo-sketch">
+      {/* GRID SECTION */}
+      <div className="wireframe-grid">
+        {experiences.map((exp) => (
+          <div className="wireframe-card" key={exp.id}>
+            
+            {/* Image Placeholder / Box */}
+            <div className="wireframe-image-box">
               {exp.image ? (
-                <img src={exp.image} alt={exp.role} />
+                <img src={exp.image} alt={exp.company} />
               ) : (
-                <div className="no-photo-placeholder">No Img</div>
+                <div className="empty-box"></div>
               )}
             </div>
-            <div className="marker-caption">{exp.company}</div>
-          </>
-        ) : (
-          /* BACK SIDE */
-          <div className="polaroid-back-doodle">
-            <h3>{exp.role}</h3>
-            <span className="doodle-date">{exp.date}</span>
-            <div className="scribble-divider"></div>
 
-            {/* Short description */}
-            <p>{exp.description}</p>
-            {exp.link && (
-              <a
-                href={exp.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="doodle-github-link"
-                onClick={(e) => e.stopPropagation()}
-              >
-                View Project 🔗
-              </a>
+            {/* Company & Role */}
+            {/* Company, Sticker & Role */}
+            <div className="wireframe-title-section">
+              <div className="company-header-row">
+                <h2>{exp.company}</h2>
+                
+                {/* Only shows the sticker if both the image and URL exist */}
+                {exp.sticker && exp.companyUrl && (
+                  <a 
+                    href={exp.companyUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="sticker-link"
+                  >
+                    <img 
+                      src={exp.sticker} 
+                      alt={`${exp.company} link`} 
+                      className="clickable-sticker" 
+                      style={exp.stickerStyle}
+                    />
+                  </a>
+                )}
+              </div>
+              <span className="wireframe-role">{exp.role} ({exp.date})</span>
+            </div>
+
+            {/* Standard Bullet Points */}
+            {exp.details && exp.details.length > 0 && (
+              <ul className="wireframe-bullets">
+                {exp.details.map((bullet, i) => (
+                  <li key={i}>{bullet}</li>
+                ))}
+              </ul>
             )}
-            <button
-              className="read-more-btn"
-              onClick={(e) => {
-                e.stopPropagation(); // Stop card from flipping back
-                onExpand(exp); // Open the window
-              }}
-            >
-              See Details ➜
-            </button>
+
+            {/* Tech Tags */}
+            {exp.tags && exp.tags.length > 0 && (
+              <div className="wireframe-tags">
+                {exp.tags.map((tag, i) => (
+                  <span key={i} className="wire-tag">{tag}</span>
+                ))}
+              </div>
+            )}
+
           </div>
-        )}
+        ))}
       </div>
     </div>
   );
-}
+};
 
-/* Main Page Container */
-function Experience() {
-  const [selectedExp, setSelectedExp] = useState(null);
-
-  return (
-    <div className="page-content experience-page">
-      <h2 className="head-title">My Journey</h2>
-
-      <div className="trail-container">
-        <div className="trail-line"></div>
-        {experiences.map((exp, index) => {
-          const side = index % 2 === 0 ? "left" : "right";
-          return (
-            /* Wrapper for Zig-Zag Positioning */
-            <div key={exp.id} className={`trail-stop ${side}`}>
-              {/* The Dot on the center line */}
-              <div className="trail-marker"></div>
-
-              {/* The Dashed line connecting card to center */}
-              <div className="trail-connector"></div>
-              <DoodlePolaroid
-                exp={exp}
-                index={index}
-                onExpand={setSelectedExp}
-              />
-            </div>
-          );
-        })}
-      </div>
-
-      {selectedExp && (
-        <div className="doodle-overlay" onClick={() => setSelectedExp(null)}>
-          <div className="doodle-modal" onClick={(e) => e.stopPropagation()}>
-            <button
-              className="close-scribble"
-              onClick={() => setSelectedExp(null)}
-            >
-              X
-            </button>
-
-            <h2>{selectedExp.role}</h2>
-            <h3>@ {selectedExp.company}</h3>
-
-            {/* THE BULLET POINTS */}
-            <ul>
-              {/* If details exist, map them. Else show description */}
-              {selectedExp.details ? (
-                selectedExp.details.map((point, i) => <li key={i}>{point}</li>)
-              ) : (
-                <li>{selectedExp.description}</li>
-              )}
-            </ul>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
-export default Experience;
+export default Experiences;

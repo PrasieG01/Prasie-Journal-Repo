@@ -24,12 +24,19 @@ import sql_icon from "../assets/sql_icon.jpg";
 import Git_icon from "../assets/Git_icon.jpg";
 import figma_icon from "../assets/figma_icon.jpg";
 import aws_icon from "../assets/aws_icon.jpg";
+import c_icon from "../assets/c_icon.png";
 
 import githubDoodle from "../assets/github.png";
 import linkedinDoodle from "../assets/linkedin.png";
 import emailDoodle from "../assets/gmail.png";
+import arrowImg from "../assets/arrow.png";
+import moobarImg from "../assets/moobar.png";
+import sipsImg from "../assets/sips.png";
+import blankstreetImg from "../assets/blankstreet.png";
+import mollyteaImg from "../assets/mollytea.png";
+import heyteaImg from "../assets/heytea.png";
 
-import arrowImg from "../assets/down-arrow.png";
+import vinylGif from '../assets/vinyl.gif';
 
 const InteractiveDesk = ({ onNavigate }) => {
   const formRef = useRef();
@@ -66,11 +73,21 @@ const InteractiveDesk = ({ onNavigate }) => {
       id: "Corkboard",
       img: corkImg,
       handLabel: "My Experiences",
-      title: "Career Journey",
-      type: "info",
-      data: "From my first internship to my current role, view my full resume and timeline.",
-      cta: { text: "View Experiences", link: "/experiences" },
-      style: { left: "11.92%", top: "7.50%", width: "26.29%", zIndex: 1 }
+      path: "experiences",
+      style: { left: "11.92%", top: "7.50%", width: "26.29%", zIndex: 1 },
+
+      arrowStyle: {
+        top: "105%", 
+        left: "10%", 
+        transform: "rotate(310deg)", 
+        width: "40%" 
+      },
+      labelStyle: {
+        top: "100%", 
+        left: "20%",
+        transform: "rotate(-30deg)", 
+        width: "10%"
+      }
     },
     {
       id: "Totebag",
@@ -79,17 +96,40 @@ const InteractiveDesk = ({ onNavigate }) => {
       title: "The Explorer",
       type: "info",
       data: "I love traveling, photography, and collecting memories. My totebag holds the tools I use to capture the world.",
-      style: { left: "71.62%", top: "2.75%", width: "15.27%", zIndex: 2 }
+      style: { left: "71.62%", top: "2.75%", width: "15.27%", zIndex: 2 },
+
+      arrowStyle: {
+        top: "95%", 
+        left: "85%", 
+        transform: "rotate(-160deg)", 
+        width: "60%"
+      },
+      labelStyle: {
+        top: "105%", 
+        left: "95%",
+        transform: "rotate(-5deg)", 
+        width: "20%"
+      }
     },
     {
       id: "Prasie",
       img: prasieImg,
       handLabel: "About Me",
-      title: "Hi, I'm Prasie!",
-      type: "info",
-      data: "Welcome to my digital space. Click below to read more about my journey.",
-      cta: { text: "Visit About Page", link: "/about" },
-      style: { left: "39.12%", top: "5.25%", width: "20.64%", zIndex: 1 }
+      path: "about",
+      style: { left: "39.12%", top: "5.25%", width: "20.64%", zIndex: 1 },
+
+      arrowStyle: {
+        top: "2%", 
+        left: "80%", 
+        transform: "rotate(140deg)", 
+        width: "50%" 
+      },
+      labelStyle: {
+        top: "100%", 
+        left: "65%",
+        transform: "rotate(-20deg)", 
+        width: "20%"
+      }
     },
     {
       id: "Laptop",
@@ -108,27 +148,103 @@ const InteractiveDesk = ({ onNavigate }) => {
         { name: "Java", icon: java_icon },
         { name: "AWS", icon: aws_icon },
         { name: "SQL", icon: sql_icon },
+        { name: "C", icon: c_icon },
       ],
-      style: { left: "43.93%", top: "34.75%", width: "26.78%", zIndex: 4 }
+      style: { left: "43.93%", top: "34.75%", width: "26.78%", zIndex: 4 },
+
+      arrowStyle: {
+        top: "105%", /* 85% down from the top of the laptop */
+        left: "45%", /* Slightly right of center */
+        transform: "rotate(-150deg)", /* Points it at the laptop */
+        width: "35%" /* Size of the arrow */
+      },
+      labelStyle: {
+        top: "100%", /* Sits right under the laptop */
+        left: "45%",
+        transform: "rotate(-20deg)", /* Cute tilted text */
+        width: "20%"
+      }
     },
     {
       id: "Books",
       img: booksImg,
-      handLabel: "Studies",
+      handLabel: "Books",
       title: "What I'm Learning",
       type: "info",
       data: "A peek into the books, courses, and algorithms keeping me busy lately.",
-      style: { left: "20.15%", top: "46.63%", width: "12.90%", zIndex: 5 }
+      style: { left: "20.15%", top: "46.63%", width: "12.90%", zIndex: 5 },
+
+      arrowStyle: {
+        top: "105%", /* 85% down from the top of the laptop */
+        left: "35%", /* Slightly right of center */
+        transform: "rotate(-140deg)", /* Points it at the laptop */
+        width: "70%" /* Size of the arrow */
+      },
+      labelStyle: {
+        top: "100%", /* Sits right under the laptop */
+        left: "45%",
+        transform: "rotate(-120deg)", /* Cute tilted text */
+        width: "120%"
+      }
     },
+
     {
       id: "Headphones",
       img: headphonesImg,
       handLabel: "Vibes",
-      title: "Current Playlist",
-      type: "info",
-      data: "Nothing gets me into the coding zone quite like a good playlist.",
-      style: { left: "32.29%", top: "50.00%", width: "8.79%", zIndex: 6 }
+      title: "Currently Listening",
+      type: "music",
+      data: [
+        { 
+          title: "Beautiful Boy", 
+          artist: "Wes Bos & Scott Tolinski", 
+          time: "AudioBook",
+          link: "https://syntax.fm/"
+        },
+        { 
+          title: "Good Days", 
+          artist: "SZA", 
+          time: "Song",
+          link: "https://open.spotify.com/track/3YJJjEN5snEEpUz382OegP" 
+        },
+
+        { 
+          title: "Good Days", 
+          artist: "SZA", 
+          time: "Song",
+          link: "https://open.spotify.com/track/3YJJjEN5snEEpUz382OegP" 
+        },
+
+        { 
+          title: "Good Days", 
+          artist: "SZA", 
+          time: "Song",
+          link: "https://open.spotify.com/track/3YJJjEN5snEEpUz382OegP" 
+        },
+
+        { 
+          title: "Lofi Girl (Beats to code to)", 
+          artist: "ChilledCow", 
+          time: "Playlist",
+          link: "https://www.youtube.com/watch?v=jfKfPfyJRdk" 
+        }
+      ],
+      style: { left: "32.29%", top: "50.00%", width: "8.79%" },
+
+      arrowStyle: {
+        top: "95%", /* 85% down from the top of the laptop */
+        left: "55%", /* Slightly right of center */
+        transform: "rotate(-150deg)", /* Points it at the laptop */
+        width: "110%" /* Size of the arrow */
+      },
+      labelStyle: {
+        top: "100%", /* Sits right under the laptop */
+        left: "65%",
+        transform: "rotate(-20deg)", /* Cute tilted text */
+        width: "20%"
+      }
     },
+    
     {
       id: "Journal",
       img: journalImg,
@@ -136,16 +252,48 @@ const InteractiveDesk = ({ onNavigate }) => {
       title: "My Notebook",
       type: "info",
       data: "Where all the messy wireframes and midnight ideas live.",
-      style: { left: "68.55%", top: "56.88%", width: "7.46%", zIndex: 7 }
+      style: { left: "68.55%", top: "56.88%", width: "7.46%", zIndex: 7 },
+
+      arrowStyle: {
+        top: "125%", /* 85% down from the top of the laptop */
+        left: "-46%", /* Slightly right of center */
+        transform: "rotate(310deg)", /* Points it at the laptop */
+        width: "105%" /* Size of the arrow */
+      },
+      labelStyle: {
+        top: "100%", 
+        left: "65%",
+        transform: "rotate(-20deg)",
+        width: "15%"
+      }
     },
     {
       id: "Matcha",
       img: matchaImg,
       handLabel: "Fuel",
-      title: "Matcha Time",
-      type: "info",
-      data: "Turning caffeine into code, one sip at a time.",
-      style: { left: "74.82%", top: "52.13%", width: "9.5%", zIndex: 8 }
+      title: "Matcha Tour",
+      type: "gallery", 
+      data: [
+        { name: "📍The Moo Bar, Seattle WA", img: moobarImg },
+        { name: "📍Sips & Bibble, NY", img: sipsImg },
+        { name: "📍Blank Street, NY", img: blankstreetImg },
+        { name: "📍Molly Tea, NY", img: mollyteaImg },
+        { name: "📍Hey Tea, NY", img: heyteaImg }
+      ],
+      style: { left: "74.82%", top: "54.13%", width: "8.5%" },
+
+      arrowStyle: {
+        top: "125%", 
+        left: "-46%", 
+        transform: "rotate(310deg)", 
+        width: "105%" 
+      },
+      labelStyle: {
+        top: "100%", 
+        left: "65%",
+        transform: "rotate(-20deg)",
+        width: "15%"
+      }
     },
     {
       id: "Phone",
@@ -157,7 +305,20 @@ const InteractiveDesk = ({ onNavigate }) => {
         { name: "GitHub", link: "https://github.com/PrasieG01" },
         { name: "Email", link: "mailto:gyenwaliprasamsha@gmail.com" },
       ],
-      style: { left: "76.36%", top: "64.50%", width: "7.18%", zIndex: 9 }
+      style: { left: "76.36%", top: "64.50%", width: "7.18%", zIndex: 9 },
+
+      arrowStyle: {
+        top: "100%", /* 85% down from the top of the laptop */
+        left: "95%", /* Slightly right of center */
+        transform: "rotate(-160deg)", /* Points it at the laptop */
+        width: "120%" /* Size of the arrow */
+      },
+      labelStyle: {
+        top: "60%", /* Sits right under the laptop */
+        left: "55%",
+        transform: "rotate(-20deg)", /* Cute tilted text */
+        width: "20%"
+      }
     }
   ];
 
@@ -172,7 +333,13 @@ const InteractiveDesk = ({ onNavigate }) => {
             id={item.id}
             className="desk-item"
             style={item.style}
-            onClick={() => setSelectedItem(item)}
+            onClick={() => {
+     if (item.path) {
+       onNavigate(item.path); 
+     } else {
+       setSelectedItem(item);
+     }
+   }}
           >
             <img src={item.img} alt={item.id} />
             {item.handLabel && (
@@ -235,6 +402,52 @@ const InteractiveDesk = ({ onNavigate }) => {
                       {selectedItem.cta.text} ➜
                     </a>
                   )}
+                </div>
+              )}
+
+              {/* Type: MUSIC (Vinyl Player & Tracklist) */}
+              {selectedItem.type === "music" && (
+                <div className="music-popup-container">
+
+                  {/* The Canva Vinyl GIF */}
+                  <div className="vinyl-gif-wrapper">
+                    <img src={vinylGif} alt="Spinning Vinyl" className="vinyl-gif" />
+                  </div>
+                  {/* The Clean Tracklist */}
+                  <ul className="music-list">
+                    {selectedItem.data.map((track, index) => (
+                      <li key={index} className="music-item">
+                        <a 
+                          href={track.link} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="music-link"
+                        >
+                          <span className="track-title">{track.title}</span>
+                          <span className="track-artist"> by {track.artist}</span>
+                          <span className="track-badge">{track.time}</span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+
+                </div>
+              )}
+
+              {/* Type: GALLERY (Polaroid Carousel) */}
+              {selectedItem.type === "gallery" && (
+                <div className="polaroid-carousel-container">
+                  <div className="polaroid-track">
+                    {selectedItem.data.map((place, index) => (
+                      <div key={index} className="polaroid-card">
+                        <div className="polaroid-photo">
+                          <img src={place.img} alt={place.name} />
+                        </div>
+                        <span className="polaroid-caption">{place.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="swipe-hint">← slide to see more →</p>
                 </div>
               )}
 
