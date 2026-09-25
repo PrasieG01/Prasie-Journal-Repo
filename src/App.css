@@ -327,12 +327,14 @@ button.tab.active {
     transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
     filter 0.2s ease;
   transform-origin: center bottom;
+  pointer-events: none !important;
 }
 
 .desk-item img {
   width: 100%;
   height: auto;
   display: block;
+  pointer-events: none !important;
 }
 
 /* The Hover Effect (Subtle Pop) */
@@ -341,6 +343,11 @@ button.tab.active {
   filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.8))
     drop-shadow(0 8px 15px rgba(0, 0, 0, 0.2));
   z-index: 20;
+}
+
+/* Turn clicks back ON only for the actual hitbox */
+.desk-item .hitbox {
+  pointer-events: auto !important;
 }
 
 /* --- POPUP & STICKERS --- */

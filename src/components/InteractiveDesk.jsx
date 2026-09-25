@@ -116,7 +116,14 @@ const InteractiveDesk = ({ onNavigate }) => {
       img: prasieImg,
       handLabel: "About Me",
       path: "about",
-      style: { left: "39.12%", top: "5.25%", width: "20.64%", zIndex: 1 },
+      style: { left: "39.12%", top: "5.25%", width: "20.64%", zIndex: 2 },
+
+      hitboxStyle: {
+        top: "0%", 
+        left: "4.5%",  
+        width: "80%", 
+        height: "95%" 
+      },
 
       arrowStyle: {
         top: "2%", 
@@ -150,18 +157,27 @@ const InteractiveDesk = ({ onNavigate }) => {
         { name: "SQL", icon: sql_icon },
         { name: "C", icon: c_icon },
       ],
-      style: { left: "43.93%", top: "34.75%", width: "26.78%", zIndex: 4 },
+      style: { left: "43.93%", top: "34.75%", width: "26.78%", zIndex: 5 },
 
       arrowStyle: {
-        top: "105%", /* 85% down from the top of the laptop */
-        left: "45%", /* Slightly right of center */
-        transform: "rotate(-150deg)", /* Points it at the laptop */
-        width: "35%" /* Size of the arrow */
-      },
-      labelStyle: {
-        top: "100%", /* Sits right under the laptop */
+        top: "105%", 
         left: "45%",
-        transform: "rotate(-20deg)", /* Cute tilted text */
+        transform: "rotate(-150deg)", 
+        width: "35%" 
+      },
+
+      hitboxStyle: {
+        top: "10%",    
+        left: "5%",   
+        width: "100%",  
+        height: "90%",  
+        clipPath: "polygon(40% 0%, 100% 0%, 80% 100%, -8% 90%)"      
+       },
+      
+      labelStyle: {
+        top: "100%", 
+        left: "45%",
+        transform: "rotate(-20deg)", 
         width: "20%"
       }
     },
@@ -175,15 +191,15 @@ const InteractiveDesk = ({ onNavigate }) => {
       style: { left: "20.15%", top: "46.63%", width: "12.90%", zIndex: 5 },
 
       arrowStyle: {
-        top: "105%", /* 85% down from the top of the laptop */
-        left: "35%", /* Slightly right of center */
-        transform: "rotate(-140deg)", /* Points it at the laptop */
-        width: "70%" /* Size of the arrow */
+        top: "105%", 
+        left: "35%", 
+        transform: "rotate(-140deg)", 
+        width: "70%" 
       },
       labelStyle: {
-        top: "100%", /* Sits right under the laptop */
+        top: "100%", 
         left: "45%",
-        transform: "rotate(-120deg)", /* Cute tilted text */
+        transform: "rotate(-120deg)", 
         width: "120%"
       }
     },
@@ -255,10 +271,10 @@ const InteractiveDesk = ({ onNavigate }) => {
       style: { left: "68.55%", top: "56.88%", width: "7.46%", zIndex: 7 },
 
       arrowStyle: {
-        top: "125%", /* 85% down from the top of the laptop */
-        left: "-46%", /* Slightly right of center */
-        transform: "rotate(310deg)", /* Points it at the laptop */
-        width: "105%" /* Size of the arrow */
+        top: "125%", 
+        left: "-46%",
+        transform: "rotate(310deg)", 
+        width: "105%"
       },
       labelStyle: {
         top: "100%", 
@@ -308,15 +324,15 @@ const InteractiveDesk = ({ onNavigate }) => {
       style: { left: "76.36%", top: "64.50%", width: "7.18%", zIndex: 9 },
 
       arrowStyle: {
-        top: "100%", /* 85% down from the top of the laptop */
-        left: "95%", /* Slightly right of center */
-        transform: "rotate(-160deg)", /* Points it at the laptop */
-        width: "120%" /* Size of the arrow */
+        top: "100%",
+        left: "95%",
+        transform: "rotate(-160deg)", 
+        width: "120%" 
       },
       labelStyle: {
-        top: "60%", /* Sits right under the laptop */
+        top: "60%", 
         left: "55%",
-        transform: "rotate(-20deg)", /* Cute tilted text */
+        transform: "rotate(-20deg)", 
         width: "20%"
       }
     }
@@ -328,33 +344,48 @@ const InteractiveDesk = ({ onNavigate }) => {
         <img src={deskBg} alt="Desk" className="desk-bg" />
 
         {items.map((item) => (
-          <div
-            key={item.id}
-            id={item.id}
-            className="desk-item"
-            style={item.style}
-            onClick={() => {
-     if (item.path) {
-       onNavigate(item.path); 
-     } else {
-       setSelectedItem(item);
-     }
-   }}
-          >
-            <img src={item.img} alt={item.id} />
-            {item.handLabel && (
-              <div className="hand-drawn-wrapper">
-                <div className="arrow-container" style={item.arrowStyle || {}}>
-                  <img src={arrowImg} alt="arrow" className="arrow-img" />
-                </div>
+        <div
+          key={item.id}
+          id={item.id}
+          className="desk-item"
+          style={item.style}
+        >
+          {/* The image itself */}
+          <img src={item.img} alt={item.id} />
 
-                <div className="label-container" style={item.labelStyle || {}}>
-                  <span className="label-text">{item.handLabel}</span>
-                </div>
+          <div 
+            className="hitbox"
+            onClick={() => {
+              if (item.path) {
+                onNavigate(item.path); 
+              } else {
+                setSelectedItem(item);
+              }
+            }}
+            style={{
+              position: "absolute",
+              cursor: "pointer",
+              top: item.hitboxStyle?.top || "0%",
+              left: item.hitboxStyle?.left || "0%",
+              width: item.hitboxStyle?.width || "100%",
+              height: item.hitboxStyle?.height || "100%",
+              clipPath: item.hitboxStyle?.clipPath || "none",
+            }}
+          ></div>
+
+          {item.handLabel && (
+            <div className="hand-drawn-wrapper">
+              <div className="arrow-container" style={item.arrowStyle || {}}>
+                <img src={arrowImg} alt="arrow" className="arrow-img" />
               </div>
-            )}
-          </div>
-        ))}
+
+              <div className="label-container" style={item.labelStyle || {}}>
+                <span className="label-text">{item.handLabel}</span>
+              </div>
+            </div>
+          )}
+        </div>
+      ))})
       </div>
 
       {selectedItem && (
