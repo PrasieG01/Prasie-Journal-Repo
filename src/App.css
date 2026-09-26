@@ -1187,7 +1187,7 @@ button.tab.active {
   margin-bottom: 40px;
   cursor: pointer;
   opacity: 0.6; 
-  transition: opacity 0.2s, transform 0.2s;
+  transition: transform 0.2s;
 }
 
 .timeline-node:hover {
@@ -1215,12 +1215,17 @@ button.tab.active {
   box-shadow: 4px 4px 0px #222;
   overflow: hidden; 
   background-color: #fff; 
+  border: 3px solid rgba(34, 34, 34, 0.4);
+  box-shadow: 4px 4px 0px rgba(34, 34, 34, 0.4);
 }
 
 .marker-logo {
-  width: 85%; /* Fits nicely inside the border */
-  height: 85%;
-  object-fit: contain; /* Prevents stretching */
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  border-radius: 50%;
+  opacity: 0.4; 
+  transition: opacity 0.2s;
 }
 
 .marker-text {
@@ -1236,12 +1241,30 @@ button.tab.active {
   padding: 15px 25px;
   box-shadow: 4px 4px 0px #222;
   border-radius: 4px;
+  opacity: 0.5;
+  transition: opacity 0.2s, transform 0.2s, background 0.2s;
+}
+
+.timeline-node:hover .timeline-sticker,
+.timeline-node.active .timeline-sticker {
+  opacity: 1;
 }
 
 .timeline-node.active .timeline-sticker {
   background: #fff9e6; 
   border-color: #222;
   box-shadow: 6px 6px 0px #222;
+}
+
+.timeline-node:hover .timeline-marker,
+.timeline-node.active .timeline-marker {
+  border-color: #222; 
+  box-shadow: 4px 4px 0px #222; 
+}
+
+.timeline-node:hover .marker-logo,
+.timeline-node.active .marker-logo {
+  opacity: 1; 
 }
 
 .sticker-company {
@@ -1298,7 +1321,7 @@ button.tab.active {
 }
 
 .detail-company a:hover {
-  color: #373232; 
+  color: #2c99c4; 
 }
 
 .detail-role {
@@ -1358,5 +1381,74 @@ button.tab.active {
   }
   .detail-column {
     position: static; 
+  }
+}
+
+
+/* --- CONTACT PAGE AT BOTTOM OF SCREEN --- */
+.contact-page-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.contact-content-wrapper {
+  display: flex; 
+  gap: 50px;
+  background: #fdfdfc;
+  border: 3px solid #222;
+  box-shadow: 12px 12px 0px rgba(0,0,0,1);
+  padding: 40px;
+  margin-top: 40px;
+}
+
+.contact-blurb {
+  flex: 1; 
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.3rem;
+  color: #333;
+}
+
+.blurb-heading {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #222;
+  margin-top: 0;
+}
+
+.contact-socials {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.social-pill {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  background: #222;
+  color: #fff;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: 2px solid #222;
+  transition: all 0.2s;
+}
+
+.social-pill:hover {
+  background: #fff;
+  color: #222;
+  transform: translateY(-3px);
+  box-shadow: 4px 4px 0px #222;
+}
+
+.contact-form-wrapper {
+  flex: 1.2; 
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .contact-content-wrapper {
+    flex-direction: column; 
   }
 }

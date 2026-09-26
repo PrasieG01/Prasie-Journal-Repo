@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { createPortal } from "react-dom";
 import { X, Send } from "lucide-react";
 import emailjs from "@emailjs/browser";
+import ContactForm from "./ContactForm";
 
 /* --- ASSETS --- */
 import deskBg from "../assets/desk-bg.png";
@@ -56,31 +57,7 @@ const InteractiveDesk = ({ onNavigate }) => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [hoveredItem, setHoveredItem] = useState(null);
   const [expandedImage, setExpandedImage] = useState(null);
-  const [status, setStatus] = useState("idle"); // 'idle' | 'sending' | 'success' | 'error'
-  const sendEmail = (e) => {
-    e.preventDefault();
-    setStatus("sending");
-
-    emailjs
-      .sendForm(
-        "service_dgcg2wt",
-        "template_i5nx8pe",
-        formRef.current,
-        "4fNbSDSqNxAnxg2Ij",
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-          setStatus("success");
-          setTimeout(() => setStatus("idle"), 3000);
-        },
-        (error) => {
-          console.log(error.text);
-          setStatus("error");
-        },
-      );
-  };
-
+ 
   // CALCULATED POSITIONS
   // Base Width: 1434px | Base Height: 800px
   const items = [
@@ -529,52 +506,7 @@ const InteractiveDesk = ({ onNavigate }) => {
 
                   <hr className="doodle-divider" />
 
-                  <form
-                    className="doodle-form"
-                    ref={formRef}
-                    onSubmit={sendEmail}
-                  >
-                    <div className="form-group compact">
-                      <label>Name:</label>
-                      <input
-                        type="text"
-                        className="doodle-input"
-                        placeholder="Name"
-                      />
-                    </div>
-
-                    <div className="form-group compact">
-                      <label>Email:</label>
-                      <input
-                        type="email"
-                        className="doodle-input"
-                        placeholder="Email"
-                      />
-                    </div>
-
-                    <div className="form-group compact">
-                      <label>Your Message:</label>
-                      <textarea
-                        className="doodle-input textarea"
-                        placeholder="I'd like to chat about..."
-                        rows="3"
-                      ></textarea>
-                    </div>
-                    <button
-                      type="submit"
-                      className="doodle-send-btn compact-btn"
-                      disabled={status === "sending" || status === "success"}
-                    >
-                      {status === "idle" && (
-                        <>
-                          Send It <Send size={16} />
-                        </>
-                      )}
-                      {status === "sending" && "Sending..."}
-                      {status === "success" && "Sent! ✅"}
-                      {status === "error" && "Failed ❌"}
-                    </button>
-                  </form>
+                  <ContactForm />
                 </div>
               )}
             </div>
