@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {experiences} from '../data/experiences.js';
+import {experiences} from '../data/Experiences.js';
 import '../App.css';
 
 const Experiences = () => {
