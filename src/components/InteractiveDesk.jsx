@@ -37,12 +37,25 @@ import blankstreetImg from "../assets/blankstreet.png";
 import mollyteaImg from "../assets/mollytea.png";
 import heyteaImg from "../assets/heytea.png";
 
+
+import photo1Img from "../assets/photo1Img.png";
+import photo2Img from "../assets/photo2Img.png";
+import photo3Img from "../assets/photo3Img.png";
+import photo4Img from "../assets/photo4Img.png";
+import photo5Img from "../assets/photo5Img.png";
+import photo6Img from "../assets/photo6Img.png";
+import photo7Img from "../assets/photo7Img.png";
+import photo8Img from "../assets/photo8Img.png";
+import photo9Img from "../assets/photo9Img.png";
+import photo10Img from "../assets/photo10Img.png";
+
 import vinylGif from '../assets/vinyl.gif';
 
 const InteractiveDesk = ({ onNavigate }) => {
   const formRef = useRef();
   const [selectedItem, setSelectedItem] = useState(null);
   const [hoveredItem, setHoveredItem] = useState(null);
+  const [expandedImage, setExpandedImage] = useState(null);
   const [status, setStatus] = useState("idle"); // 'idle' | 'sending' | 'success' | 'error'
   const sendEmail = (e) => {
     e.preventDefault();
@@ -75,7 +88,6 @@ const InteractiveDesk = ({ onNavigate }) => {
       id: "Corkboard",
       img: corkImg,
       handLabel: "My Experiences",
-      path: "experiences",
       style: { left: "11.92%", top: "7.50%", width: "26.29%", zIndex: 1 },
       path: "experiences",
     },
@@ -83,9 +95,23 @@ const InteractiveDesk = ({ onNavigate }) => {
       id: "Totebag",
       img: toteImg,
       handLabel: "Hobbies",
-      title: "The Explorer",
-      type: "info",
-      data: "I love traveling, photography, and collecting memories. My totebag holds the tools I use to capture the world.",
+      title: "My Scrapbook",
+      type: "photo-grid",
+
+      data: [
+        { id: 1, img: photo1Img, caption: "etheral" },
+        { id: 2, img: photo2Img, caption: "2am at Butler Library" },
+        { id: 3, img: photo3Img, caption: "sunset de la calle" },
+        { id: 4, img: photo4Img, caption: "disneyland" },
+        { id: 5, img: photo5Img, caption: "jellyfish friends" },
+        { id: 6, img: photo6Img, caption: "rush hour" },
+        { id: 7, img: photo7Img, caption: "night n light" },
+        { id: 8, img: photo8Img, caption: "moomin finds" },
+        { id: 9, img: photo9Img, caption: "goo eats" },
+        { id: 10, img: photo10Img, caption: "Cafe cum Cafe" },
+
+      ],
+
       style: { left: "71.62%", top: "2.75%", width: "15.27%", zIndex: 2 },
 
     },
@@ -356,6 +382,7 @@ const InteractiveDesk = ({ onNavigate }) => {
                 </div>
               )}
               {selectedItem.type === "info" && (
+
                 <div className="info-content">
                   <p className="info-text">{selectedItem.data}</p>
 
@@ -379,7 +406,9 @@ const InteractiveDesk = ({ onNavigate }) => {
                     </a>
                   )}
                 </div>
-              )}
+              )
+              
+              }
 
               {/* Type: MUSIC (Vinyl Player & Tracklist) */}
               {selectedItem.type === "music" && (
@@ -424,6 +453,46 @@ const InteractiveDesk = ({ onNavigate }) => {
                     ))}
                   </div>
                   <p className="swipe-hint">← slide to see more →</p>
+                </div>
+              )}
+
+              {/* Type: PHOTO GRID (Hobbies / Scrapbook) */}
+              {selectedItem.type === "photo-grid" && (
+                <div className="photo-grid-container">
+                  {selectedItem.data.map((photo) => (
+                    
+                    <div 
+                      key={photo.id} 
+                      className="photo-grid-item"
+                      onClick={(e) => {
+                        e.stopPropagation(); 
+                        setExpandedImage(photo.img);
+                      }}
+                    >
+                      <img src={photo.img} alt={photo.caption} className="grid-image" />
+                      
+                      <div className="photo-caption">
+                        <span>{photo.caption}</span>
+                      </div>
+                    </div>
+                  ))}
+
+                  {/* 2. THE FULL-SCREEN LIGHTBOX OVERLAY */}
+                  {expandedImage && (
+                    <div 
+                      className="lightbox-overlay" 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setExpandedImage(null);
+                      }}
+                    >
+                      <button className="close-btn lightbox-close" onClick={() => setExpandedImage(null)}>
+                        <X size={30} color="#fff" />
+                      </button>
+                      <img src={expandedImage} alt="Expanded" className="lightbox-image" />
+                    </div>
+                  )}
+
                 </div>
               )}
 
