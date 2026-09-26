@@ -38,6 +38,11 @@ function App() {
         <div id="contact" className="section-wrapper">
           <Contact />
         </div>
+
+        {/* THE FOOTER */}
+        <footer className="site-footer">
+          <p>Designed & Built by Prasamsha Gyenwali © 2026</p>
+        </footer>
       </main>
 
       <nav className="sidebar">

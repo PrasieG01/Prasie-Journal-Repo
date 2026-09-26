@@ -1452,3 +1452,14 @@ button.tab.active {
     flex-direction: column; 
   }
 }
+
+/* --- FOOTER --- */
+.site-footer {
+  text-align: center;
+  padding: 40px 20px 20px 20px;
+  margin-top: -40px;
+  font-family: "Pangolin", cursive;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #652507;
+}
