@@ -7,11 +7,10 @@ import polaroid6 from "../assets/polaroid6.jpg";
 
 /*stickers*/
 import aot from "../assets/aot.png";
-import bc from "../assets/bc.png";
-import aws from "../assets/aws.png";
+import bc from "../assets/barnard.png";
+import aws from "../assets/aws1.png";
 import avatar from "../assets/avatar.png";
 import rich from "../assets/rich.png";
-// import humor from "../assets/humor.png";
 
 export const experiences = [
   {
@@ -19,7 +18,6 @@ export const experiences = [
     role: "Academic Computing Expert",
     company: "BCIT",
     date: "August 2025 - Present",
-    description: "IT support for students",
     image: polaroid4,
     details: [
       "Provide on-call technical support to students, resolving software, hardware, account, and device issues; managed 100+ IT tickets in TDX.",
@@ -41,7 +39,6 @@ export const experiences = [
     role: "SDE Intern",
     company: "Amazon",
     date: "May 2026 - August 2026",
-    description: "SDE Intern",
     image: polaroid4,
     details: [
       "Architected an isolated, production-faithful test environment for an MLflow data plane, validating end-to-end against live API test suites.",
@@ -63,7 +60,6 @@ export const experiences = [
     role: "SDE Intern",
     company: "Amazon",
     date: "May 2025 - August 2025",
-    description: "Explored Seattle, worked in AWS",
     image: polaroid1,
     details: [
       "Designed and deployed a custom tool that automated visual data processing, reducing manual review time by over 60%",
@@ -84,7 +80,6 @@ export const experiences = [
     role: "Tech Development Associate",
     company: "RICH Inc @Queens College",
     date: " Feb 2025 - April 2025",
-    description: "Revamped the website for a after-school non-profit org",
     image: polaroid2,
     details: [
       "Led website redesign, improving accessibility and integrating updated content",
@@ -105,8 +100,6 @@ export const experiences = [
     role: "Data Science Fellow",
     company: "America On Tech",
     date: "Sep 2024 - Dec 2024",
-    description:
-      "Developed a ML Model to predict student enterpreneurial success",
     image: polaroid5,
     details: [
       "Completed a 4-month Data Science Fellowship, mastering 9 modules in ML, data analysis, and predictive modeling with Python.",
@@ -129,7 +122,6 @@ export const experiences = [
     role: "UX/UI Designer",
     company: "Avatar Buddy LLC",
     date: "Jan 2026 - May 2026",
-    description: "Build AI to make people laugh :)",
     image: polaroid3,
     details: [
       "Completed a 4-month Data Science Fellowship, mastering 9 modules in ML, data analysis, and predictive modeling with Python.",
@@ -151,7 +143,6 @@ export const experiences = [
     role: "AI Researcher",
     company: "Humor Project at Computational Design Lab Columbia University",
     date: "Jan 2026 - May 2026",
-    description: "Build AI to make people laugh :)",
     image: polaroid6,
     details: [
       "Completed a 4-month Data Science Fellowship, mastering 9 modules in ML, data analysis, and predictive modeling with Python.",

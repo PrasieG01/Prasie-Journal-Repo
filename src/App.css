@@ -1064,190 +1064,7 @@ button.tab.active {
   filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.2)); 
 }
 
-/* --- WIREFRAME EXPERIENCES PAGE --- */
-.wireframe-page {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 60px 20px;
-  background-color: transparent; 
-  font-family: "Pangolin", cursive;
-  color: #000;
-}
 
-/* HEADER */
-.wireframe-header {
-  text-align: center;
-  margin-bottom: 60px;
-}
-
-.wireframe-header h1 {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 20px;
-  letter-spacing: 0.5px;
-}
-
-.wireframe-header p {
-  max-width: 600px;
-  margin: 0 auto;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #333;
-}
-
-.wireframe-divider {
-  width: 400px;
-  border: 0;
-  border-top: 2px solid #000;
-  margin: 40px auto;
-}
-
-/* GRID */
-.wireframe-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 30px;
-}
-
-/* OUTER CARD */
-.wireframe-card {
-  border: 2px solid #000; 
-  background-color: #fff; 
-  padding: 25px;
-  display: flex;
-  flex-direction: column;
-}
-
-/* INNER IMAGE BOX */
-.wireframe-image-box {
-  width: 100%;
-  height: 200px;
-  border: 2px solid #000; 
-  margin-bottom: 20px;
-  overflow: hidden;
-}
-
-.wireframe-image-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.empty-box {
-  width: 100%;
-  height: 100%;
-  background-color: #f9f9f9;
-}
-
-/* TITLE & ROLE */
-.wireframe-title-section {
-  margin-bottom: 15px;
-}
-
-.wireframe-title-section h2 {
-  font-size: 1.3rem;
-  font-weight: bold;
-  margin: 0 0 5px 0;
-}
-
-.wireframe-role {
-  font-size: 0.95rem;
-  color: #555;
-  font-style: italic;
-}
-
-/* BULLET POINTS */
-.wireframe-bullets {
-  padding-left: 25px;
-  margin: 0 0 25px 0;
-  flex-grow: 1; 
-}
-
-.wireframe-bullets li {
-  margin-bottom: 8px;
-  line-height: 1.3;
-  font-size: 0.8rem;
-  font-family: "Quicksand", sans-serif;
-  color: #000;
-  list-style-type: disc; 
-}
-
-/* TECH TAGS */
-.wireframe-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: auto;
-}
-
-.wire-tag {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  padding: 4px 10px;
-  border: 1px solid #000; /* Minimalist outline */
-  background-color: #fff;
-  color: #000;
-  font-weight: 500;
-}
-
-/* --- TITLE & STICKER ALIGNMENT --- */
-.wireframe-title-section {
-  margin-bottom: 15px;
-}
-
-.company-header-row {
-  display: flex;
-  align-items: center; 
-  margin-bottom: 5px;
-}
-
-.company-header-row h2 {
-  font-size: 1.3rem;
-  font-weight: bold;
-  margin: 0; 
-  font-family: "Pangolin", cursive;
-}
-
-/* --- THE STICKER --- */
-.sticker-link {
-  display: inline-flex; /* Keeps the link tight around the image */
-  align-items: center;
-  padding-left: 80px;
-}
-
-.clickable-sticker {
-  width: auto;
-  transform: rotate(-6deg); /* Gives it that casual "slapped on" look */
-  transition: transform 0.2s ease, filter 0.2s ease;
-}
-
-/* The Hover Animation! */
-.sticker-link:hover .clickable-sticker {
-  transform: rotate(4deg) scale(1.15); /* Wiggles and grows when you mouse over */
-  cursor: pointer;
-}
-
-.wireframe-role {
-  font-size: 0.95rem;
-  color: #555;
-  font-style: italic;
-  display: block; /* Ensures it drops to the next line under the title */
-}
-
-.notebook-col {
-  flex: 1; 
-  min-width: 0; 
-}
-
-.activity-desc {
-  color: #0b0b0b;
-  margin-left: 4px;
-  line-height: 1.4;
-  overflow-wrap: break-word; 
-  word-wrap: break-word;
-  font-family: "Patrick Hand", cursive;
-  font-size: 1.1rem;
-}
 
 /* --- THE MAIN POPUP --- */
 .popup-card {
@@ -1331,4 +1148,215 @@ button.tab.active {
   border: none;
   cursor: pointer;
   z-index: 10;
+}
+
+
+/* --- OVERALL SPLIT LAYOUT --- */
+.experiences-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.experiences-split-layout {
+  display: flex;
+  gap: 60px;
+  align-items: flex-start;
+  margin-top: 30px;
+}
+
+.timeline-column {
+  flex: 1; 
+}
+
+.detail-column {
+  flex: 1.2; 
+  position: sticky;
+  top: 100px; 
+}
+
+/* --- THE TIMELINE NODES --- */
+.doodle-timeline {
+  position: relative;
+  padding-left: 50px;
+  border-left: 4px dashed #222; 
+}
+
+.timeline-node {
+  position: relative;
+  margin-bottom: 40px;
+  cursor: pointer;
+  opacity: 0.6; 
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.timeline-node:hover {
+  opacity: 1;
+}
+
+.timeline-node.active {
+  opacity: 1;
+  transform: translateX(10px); 
+}
+
+/* --- THE CIRCLE STICKERS --- */
+.timeline-marker {
+  position: absolute;
+  left: -77px;
+  top: 0;
+  width: 55px; 
+  height: 55px; 
+  background: #fff;
+  border: 3px solid #222;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 4px 4px 0px #222;
+  overflow: hidden; 
+  background-color: #fff; 
+}
+
+.marker-logo {
+  width: 85%; /* Fits nicely inside the border */
+  height: 85%;
+  object-fit: contain; /* Prevents stretching */
+}
+
+.marker-text {
+  font-family: 'Patrick Hand', cursive;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+/* --- LEFT SIDE: COMPANY STICKERS --- */
+.timeline-sticker {
+  background: #fdfdfc;
+  border: 3px solid #222;
+  padding: 15px 25px;
+  box-shadow: 4px 4px 0px #222;
+  border-radius: 4px;
+}
+
+.timeline-node.active .timeline-sticker {
+  background: #fff9e6; 
+  border-color: #222;
+  box-shadow: 6px 6px 0px #222;
+}
+
+.sticker-company {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin: 0 0 5px 0;
+}
+
+.sticker-role {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.1rem;
+  color: #34382f;
+  margin: 0;
+}
+
+.sticker-date {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* --- RIGHT SIDE: STICKY DETAIL CARD --- */
+.job-detail-card {
+  background: #fff;
+  border: 3px solid #222;
+  box-shadow: 12px 12px 0px rgba(0,0,0,1);
+  padding: 40px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.detail-header {
+  border-bottom: 2px dashed #ccc;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.detail-company {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  margin: 0;
+}
+
+.detail-company a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.detail-company a:hover {
+  color: #373232; 
+}
+
+.detail-role {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.5rem;
+  color: #3f3c3c;
+  margin: 5px 0;
+}
+
+.detail-date {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.1rem;
+  color: #666;
+  margin: 0;
+}
+
+.detail-description {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.detail-bullets {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #333;
+  padding-left: 20px;
+  margin-bottom: 30px;
+}
+
+.detail-bullets li {
+  margin-bottom: 10px;
+}
+
+.detail-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tech-tag {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 0.85rem;
+  font-weight: bold;
+  border: 2px solid #222;
+  padding: 6px 12px;
+  background: #f4f4f0;
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 900px) {
+  .experiences-split-layout {
+    flex-direction: column; 
+  }
+  .detail-column {
+    position: static; 
+  }
 }

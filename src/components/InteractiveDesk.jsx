@@ -119,7 +119,6 @@ const InteractiveDesk = ({ onNavigate }) => {
       id: "Prasie",
       img: prasieImg,
       handLabel: "About Me",
-      path: "about",
       style: { left: "39.12%", top: "5.25%", width: "20.64%", zIndex: 2 },
       path: "about",
 

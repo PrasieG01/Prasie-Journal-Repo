@@ -1,81 +1,75 @@
-import React, { useState } from "react";
-import { experiences } from "../data/experiences";
-import { ExternalLink } from "lucide-react";
+import React, { useState } from 'react';
+import {experiences} from '../data/experiences.js';
+import '../App.css';
 
 const Experiences = () => {
+  const [selectedJob, setSelectedJob] = useState(experiences[0]);
+
   return (
-    <div className="wireframe-page">
+    <div className="experiences-container">
+      <h2 className="section-title">My Journey</h2>
       
-      {/* HEADER SECTION */}
-      <div className="wireframe-header">
-        <h1>My Journey So Far</h1>
-        <p>
-          A brief look at my work experiences, the tools I've used, 
-          and the projects I've contributed to along the way.
-        </p>
-        <hr className="wireframe-divider" />
-      </div>
+      <div className="experiences-split-layout">
+        
+        <div className="timeline-column">
+          <div className="doodle-timeline">
+            {experiences.map((job) => (
+              <div 
+                key={job.id} 
+                className={`timeline-node ${selectedJob.id === job.id ? 'active' : ''}`}
+                onClick={() => setSelectedJob(job)}
+              >
+                <div className="timeline-marker">
+                  {job.sticker ? (
+                    <img src={job.sticker} alt={job.company} className="marker-logo" />
+                  ) : (
+                    <span className="marker-text">{job.company.charAt(0)}</span>
+                  )}
+                </div>
 
-      {/* GRID SECTION */}
-      <div className="wireframe-grid">
-        {experiences.map((exp) => (
-          <div className="wireframe-card" key={exp.id}>
+                <div className="timeline-sticker">
+                  <h3 className="sticker-company">{job.company}</h3>
+                  <p className="sticker-role">{job.role}</p>
+                  <span className="sticker-date">{job.date}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="detail-column">
+          <div key={selectedJob.id} className="job-detail-card">
             
-            {/* Image Placeholder / Box */}
-            <div className="wireframe-image-box">
-              {exp.image ? (
-                <img src={exp.image} alt={exp.company} />
-              ) : (
-                <div className="empty-box"></div>
-              )}
-            </div>
-
-            {/* Company & Role */}
-            {/* Company, Sticker & Role */}
-            <div className="wireframe-title-section">
-              <div className="company-header-row">
-                <h2>{exp.company}</h2>
-                
-                {/* Only shows the sticker if both the image and URL exist */}
-                {exp.sticker && exp.companyUrl && (
-                  <a 
-                    href={exp.companyUrl} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="sticker-link"
-                  >
-                    <img 
-                      src={exp.sticker} 
-                      alt={`${exp.company} link`} 
-                      className="clickable-sticker" 
-                      style={exp.stickerStyle}
-                    />
+            <div className="detail-header">
+              <h2 className="detail-company">
+                {selectedJob.companyUrl ? (
+                  <a href={selectedJob.companyUrl} target="_blank" rel="noopener noreferrer">
+                    {selectedJob.company} ↗
                   </a>
+                ) : (
+                  selectedJob.company
                 )}
-              </div>
-              <span className="wireframe-role">{exp.role} ({exp.date})</span>
+              </h2>
+              <h3 className="detail-role">{selectedJob.role}</h3>
+              <p className="detail-date">{selectedJob.date}</p>
             </div>
 
-            {/* Standard Bullet Points */}
-            {exp.details && exp.details.length > 0 && (
-              <ul className="wireframe-bullets">
-                {exp.details.map((bullet, i) => (
-                  <li key={i}>{bullet}</li>
-                ))}
-              </ul>
-            )}
+            <p className="detail-description">{selectedJob.description}</p>
 
-            {/* Tech Tags */}
-            {exp.tags && exp.tags.length > 0 && (
-              <div className="wireframe-tags">
-                {exp.tags.map((tag, i) => (
-                  <span key={i} className="wire-tag">{tag}</span>
-                ))}
-              </div>
-            )}
+            <ul className="detail-bullets">
+              {selectedJob.details.map((bullet, i) => (
+                <li key={i}>{bullet}</li>
+              ))}
+            </ul>
+
+            <div className="detail-tech">
+              {selectedJob.tags.map((skill, i) => (
+                <span key={i} className="tech-tag">{skill}</span>
+              ))}
+            </div>
 
           </div>
-        ))}
+        </div>
+
       </div>
     </div>
   );
