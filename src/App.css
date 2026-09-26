@@ -8,6 +8,17 @@ html {
   scroll-behavior: smooth;
 }
 
+html {
+  /* Shrinks the entire foundation of the site by about 10-15% */
+  font-size: 85%; 
+}
+
+.journal-container {
+  max-width: 1500px; 
+  margin: 0 auto;
+  position: relative;
+}
+
 .section-wrapper {
   min-height: 100vh; 
   padding: 50px 20px; 
@@ -40,12 +51,6 @@ html {
   background-color: white;
 }
 
-.journal-container {
-  min-height: 100vh;
-  width: 100%;
-  padding-top: 1px;
-  box-sizing: border-box;
-}
 
 .bg-yellow {
   background-color: #fcf6e0;
@@ -1153,9 +1158,9 @@ button.tab.active {
 
 /* --- OVERALL SPLIT LAYOUT --- */
 .experiences-container {
-  max-width: 1100px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 60px 120px 60px 20px;
 }
 
 .experiences-split-layout {
